@@ -9,7 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "WEB Project 2020 7th SEM",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.0",
@@ -23,5 +23,14 @@
     "npm": "^6.14.10",
     "number-formatter": "^1.2.0",
     "path": "^0.12.7"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mims1234/online-digital-library.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mims1234/online-digital-library/issues"
+  },
+  "homepage": "https://github.com/mims1234/online-digital-library#readme"
 }
