@@ -19,19 +19,19 @@ app.use(session({
 }))
 
 // DB Credentials
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: `${process.env.DB_USER}`,
-    password: `${process.env.DB_PASS}`,
-    database: `${process.env.DB}`,
-    port: `${process.env.DB_PORT}`
-})
+// const db = mysql.createConnection({
+//     host: 'localhost',
+//     user: `${process.env.DB_USER}`,
+//     password: `${process.env.DB_PASS}`,
+//     database: `${process.env.DB}`,
+//     port: `${process.env.DB_PORT}`
+// })
 
 // DB Connection
-db.connect((err) => {
-    if(err) throw err;
-    console.log(`Database is running as * ${process.env.DB} * on PORT: ${process.env.DB_PORT}\n`)
-})
+// db.connect((err) => {
+//     if(err) throw err;
+//     console.log(`Database is running as * ${process.env.DB} * on PORT: ${process.env.DB_PORT}\n`)
+// })
 
 app.set("port",port);
 app.set("views",__dirname + "/views");
@@ -43,12 +43,12 @@ app.use(express.static(__dirname+'/public'))
 Username = process.env.usr
 Password = process.env.psd
 
-app.get("/" , async(req,res) => {
-    Query = 'SELECT * FROM user_profile'
-    db.query(Query,(err,OUTPUT) => { if(err) {console.log(err) } 
-        res.send(JSON.stringify(OUTPUT));
-    });
-})
+// app.get("/" , async(req,res) => {
+//     Query = 'SELECT * FROM user_profile'
+//     db.query(Query,(err,OUTPUT) => { if(err) {console.log(err) } 
+//         res.send(JSON.stringify(OUTPUT));
+//     });
+// })
 
 app.post("/home" , (req,res) => {
 
@@ -75,6 +75,16 @@ app.get("/loginerr" , (req,res) => {
     res.render("login",{
         message:"ERROR Invalid Username and Password"
     })
+})
+
+// TESTING
+
+app.get("/" , (req,res) => {
+        res.render("home")
+})
+
+app.get("/topic" , (req,res) => {
+    res.render("topic")
 })
 
 

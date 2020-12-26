@@ -3,10 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Digital Library</title>
+    <title>Online Digital Library - HOME</title>
+    <link rel="stylesheet" href="../CSS/home.css?verion=1.0">
+    <script src="/JS/icons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
 <body>
-    <h1 style="color:red">Welcome to Online Digital Library Website</h1>
-    <h3>User Logged In: <%=username%></h3>
+    <div class="mobile-view">
+        <i class="fas fa-desktop desktop"></i>
+        <h1 class="no-phone-title">This Website works on <span class="no-phone-title-span">Desktop Screen</span> Size <span class="no-phone-title-span">480x1000 or Higher</span> Only</h1>
+    </div>
+    <div class="sign-lightpage">
+        <div class="signin-box">
+            <p class="signin-header">SIGN IN</p>
+            <form action="" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" name="username" class="input-bar" required>
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="input-bar" required>
+                <button type="submit" class="signin">Sign In</button>
+                <button type="button" class="cancel" onclick="CloseLightBox()">Cancle</button>
+            </form>
+        </div>
+        <div class="signup-box">
+            <p class="signup-header">SIGN UP</p>
+            <form action="" method="POST">
+                <label for="fname">Firsr Name:</label>
+                <input type="text" name="fname" class="input-bar" required>
+                <label for="lanme">Last Name:</label>
+                <input type="text" name="lanme" class="input-bar" required>
+                <label for="email">Email ID:</label>
+                <input type="email" name="email" class="input-bar" required>
+                <label for="username">Username:</label>
+                <input type="text" name="username" class="input-bar" required>
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="input-bar" required>
+                <button type="submit" class="signup">Sign UP</button>
+                <button type="button" class="cancel" onclick="CloseLightBox()">Cancle</button>
+            </form>
+        </div>
+        <div class="user-box">
+            <p class="user-header">MENU</p>
+            <div class="user-button" onclick="Dashboard()">
+                Dashboard
+            </div>
+            <div class="user-button" onclick="Profile()">
+                Profile
+            </div>
+            <div class="user-button" onclick="Logout()">
+                Logout
+            </div>
+            <button type="button" class="cancel" onclick="CloseLightBox()">Cancle</button>
+        </div>
+    </div>
+    <div class="desktop-view">
+        <!-- NAVBAR -->
+        <div class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1 id="website-title">Online Digital Library</h1>
+                </div>
+                <div class="tabs">
+                    <div class="nav-item">
+                        <div class="nav-sign-in" onclick="SignINLightBox()">
+                            Sign In
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-sign-up" onclick="SignUPLightBox()">
+                            Sign Up
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-user" onclick="Menu()">
+                            🔵 Imran Mohsin
+                        </div>
+                    </div>
+                        <!-- Validator: 🔴-->
+                        <!-- Donator: 🟢-->
+                        <!-- User: 🔵-->
+                </div>
+            </div>
+        </div>
+        <!-- MAIN-SECTION -->
+        <div class="main-section">
+            <!-- GRID CONTAINER -->
+            <div class="grid-container">
+                <div class="header">SELECT A TOPIC</div>
+                <div class="main">
+                    <table>
+                        <tr>
+                            <td class="tags tag1" onmouseover="HoverTagOver('.span1','.click-span1')" onmouseout="HoverTagOut('.span1','.click-span1')" onclick="Topic()">
+                                Blockchain <br><span class="span span1">10 Posts<br></span><span class="click-span click-span1">(Click Here)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tags tag2" onmouseover="HoverTagOver('.span2','.click-span2')" onmouseout="HoverTagOut('.span2','.click-span2')">
+                                Machine Learning & Data Science <br><span class="span span2">10 Posts<br></span><span class="click-span click-span2">(Click Here)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tags tag3" onmouseover="HoverTagOver('.span3','.click-span3')" onmouseout="HoverTagOut('.span3','.click-span3')">
+                                Blockchain <br><span class="span span3">10 Posts<br></span><span class="click-span click-span3">(Click Here)</span>
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td class="tags tag4" onmouseover="HoverTagOver('.span4','.click-span4')" onmouseout="HoverTagOut('.span4','.click-span4')">
+                                Blockchain <br><span class="span span4">10 Posts<br></span><span class="click-span click-span4">(Click Here)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tags tag5" onmouseover="HoverTagOver('.span5','.click-span5')" onmouseout="HoverTagOut('.span5','.click-span5')">
+                                Blockchain <br><span class="span span5">10 Posts<br></span><span class="click-span click-span5">(Click Here)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tags tag6" onmouseover="HoverTagOver('.span6','.click-span6')" onmouseout="HoverTagOut('.span6','.click-span6')">
+                                Blockchain <br><span class="span span6">10 Posts<br></span><span class="click-span click-span6">(Click Here)</span>
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td class="tags tag7" onmouseover="HoverTagOver('.span7','.click-span7')" onmouseout="HoverTagOut('.span7','.click-span7')">
+                                Blockchain <br><span class="span span7">10 Posts<br></span><span class="click-span click-span7">(Click Here)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tags tag8" onmouseover="HoverTagOver('.span8','.click-span8')" onmouseout="HoverTagOut('.span8','.click-span8')">
+                                Blockchain <br><span class="span span8">10 Posts<br></span><span class="click-span click-span8">(Click Here)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tags tag9" onmouseover="HoverTagOver('.span9','.click-span9')" onmouseout="HoverTagOut('.span9','.click-span9')">
+                                Blockchain <br><span class="span span9">10 Posts<br></span><span class="click-span click-span9">(Click Here)</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="footer">FOOTER</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function HoverTagOver(spanA,spanB){
+            anime({
+                targets: spanA,
+                fontSize: "24px",
+                opacity:1,
+                begin: BLOCK(spanA),
+                duration:0
+            });
+            anime({
+                targets: spanB,
+                top:"20px",
+                fontSize: "10px",
+                opacity:1,
+                begin: BLOCK(spanB),
+                duration:0
+            });
+        }
+        function HoverTagOut(spanA,spanB){
+            anime({
+                targets: spanA,
+                fontSize: "12px",
+                opacity:0,
+                begin: NONE(spanA),
+                duration:0
+            });
+            anime({
+                targets: spanB,
+                fontSize: "8px",
+                opacity:0,
+                begin: NONE(spanB),
+                duration:0
+            });
+        }
+
+        function BLOCK(span) {
+            document.querySelector(span).style.display = 'block';
+        }
+
+        function NONE(span) {
+            document.querySelector(span).style.display = 'none';
+        }
+
+        function Topic(){
+            topic="topics"
+            window.location.href = `http://127.0.0.1:5501/HTML/${topic}.html`;
+        }
+
+        function CloseLightBox(){
+            document.querySelector('.sign-lightpage').style.display = 'none';
+            document.querySelector('.signup-box').style.display = 'none';
+            document.querySelector('.signin-box').style.display = 'none';
+            document.querySelector('.user-box').style.display = 'none';
+        }
+
+        function SignINLightBox(){
+            document.querySelector('.sign-lightpage').style.display = 'flex';
+            document.querySelector('.signup-box').style.display = 'none';
+            document.querySelector('.signin-box').style.display = 'flex';
+            document.querySelector('.user-box').style.display = 'none';
+        }
+
+        function SignUPLightBox(){
+            document.querySelector('.sign-lightpage').style.display = 'flex';
+            document.querySelector('.signup-box').style.display = 'flex';
+            document.querySelector('.signin-box').style.display = 'none';
+            document.querySelector('.user-box').style.display = 'none';
+        }
+
+        function SignUPLightBox(){
+            document.querySelector('.sign-lightpage').style.display = 'flex';
+            document.querySelector('.signup-box').style.display = 'flex';
+            document.querySelector('.signin-box').style.display = 'none';
+            document.querySelector('.user-box').style.display = 'none';
+        }
+
+        function Menu(){
+            document.querySelector('.sign-lightpage').style.display = 'flex';
+            document.querySelector('.signup-box').style.display = 'none';
+            document.querySelector('.signin-box').style.display = 'none';
+            document.querySelector('.user-box').style.display = 'flex';
+        }
+
+        function Logout(){
+            console.log("LOGOUT")
+        }
+        
+        function Dashboard(){
+            console.log("DASHBOARD")
+        }
+
+        function Profile(){
+            console.log("PROFILE")
+        }
+
+    </script>
 </body>
 </html>

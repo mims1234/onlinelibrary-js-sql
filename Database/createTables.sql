@@ -1,76 +1,95 @@
 CREATE TABLE onlinelibrary.user_profile (
-  `uid` int NOT NULL AUTO_INCREMENT,
-  `ufname` varchar(255) NOT NULL,
-  `ulname` varchar(255) NOT NULL,
-  `uemail` varchar(255) NOT NULL,
-  PRIMARY KEY (`uid`)
+  `Uid` int NOT NULL AUTO_INCREMENT,
+  `Ufname` varchar(255) NOT NULL,
+  `Ulname` varchar(255) NOT NULL,
+  `Uemail` varchar(255) NOT NULL,
+  PRIMARY KEY (`Uid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 CREATE TABLE onlinelibrary.user_credencials (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `uid` int NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`uid`) REFERENCES user_profile (`uid`)
+  `UCid` int NOT NULL AUTO_INCREMENT,
+  `UCusername` varchar(255) NOT NULL,
+  `UCpassword` varchar(255) NOT NULL,
+  `UCuid` int NOT NULL,
+  PRIMARY KEY (`UCid`),
+  FOREIGN KEY (`UCuid`) REFERENCES user_profile (`Uid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 CREATE TABLE onlinelibrary.validators (
-  `vid` int NOT NULL AUTO_INCREMENT,
-  `vdate` varchar(255) NOT NULL,
-  `vscore` int NOT NULL,
-  `vfaults` int NOT NULL,
-  `vuid` int NOT NULL,
-  PRIMARY KEY (`vid`),
-  FOREIGN KEY (`vuid`) REFERENCES user_profile (`uid`)
+  `Vid` int NOT NULL AUTO_INCREMENT,
+  `Vdate` varchar(255) NOT NULL,
+  `Vscore` int NOT NULL,
+  `Vfaults` int NOT NULL,
+  `Vuid` int NOT NULL,
+  PRIMARY KEY (`Vid`),
+  FOREIGN KEY (`Vuid`) REFERENCES user_profile (`Uid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 CREATE TABLE onlinelibrary.donators (
-  `did` int NOT NULL AUTO_INCREMENT,
-  `ddate` varchar(255) NOT NULL,
-  `dscore` int NOT NULL,
-  `dfaults` int NOT NULL,
-  `duid` int NOT NULL,
-  PRIMARY KEY (`did`),
-  FOREIGN KEY (`duid`) REFERENCES user_profile (`uid`)
+  `Did` int NOT NULL AUTO_INCREMENT,
+  `Ddate` varchar(255) NOT NULL,
+  `Dscore` int NOT NULL,
+  `Dfaults` int NOT NULL,
+  `Duid` int NOT NULL,
+  PRIMARY KEY (`Did`),
+  FOREIGN KEY (`Duid`) REFERENCES user_profile (`Uid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 CREATE TABLE onlinelibrary.documents (
-  `doid` int NOT NULL AUTO_INCREMENT,
-  `dolink` varchar(255) NOT NULL,
-  `dotype` varchar(255) NOT NULL,
-  `dolikes` int NOT NULL,
-  `dodislikes` int NOT NULL,
-  `doreport` int NOT NULL,
-  `dostatus` varchar(255) NOT NULL,
-  `dovalid` varchar(255) NOT NULL,
-  `dodid` int NOT NULL,
-  PRIMARY KEY (`doid`),
-  FOREIGN KEY (`dodid`) REFERENCES donators (`did`)
+  `DOid` int NOT NULL AUTO_INCREMENT,
+  `DOlink` varchar(255) NOT NULL,
+  `DOtype` varchar(255) NOT NULL,
+  `DOlikes` int NOT NULL,
+  `DOdislikes` int NOT NULL,
+  `DOreport` int NOT NULL,
+  `DOstatus` varchar(255) NOT NULL,
+  `DOvalid` varchar(255) NOT NULL,
+  `DOdid` int NOT NULL,
+  PRIMARY KEY (`DOid`),
+  FOREIGN KEY (`DOdid`) REFERENCES donators (`Did`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 CREATE TABLE onlinelibrary.validdocs (
-  `vdid` int NOT NULL AUTO_INCREMENT,
-  `vdvid` int NOT NULL,
-  `vdoid` int NOT NULL,
-  PRIMARY KEY (`vdid`),
-  FOREIGN KEY (`vdvid`) REFERENCES validators (`vid`),
-  FOREIGN KEY (`vdoid`) REFERENCES documents (`doid`)
+  `VDid` int NOT NULL AUTO_INCREMENT,
+  `VDvid` int NOT NULL,
+  `VDoid` int NOT NULL,
+  PRIMARY KEY (`VDid`),
+  FOREIGN KEY (`VDvid`) REFERENCES validators (`Vid`),
+  FOREIGN KEY (`VDoid`) REFERENCES documents (`DOid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 CREATE TABLE onlinelibrary.tags (
-  `tid` int NOT NULL AUTO_INCREMENT,
-  `tname` varchar(255) NOT NULL,
-  PRIMARY KEY (`tid`)
+  `Tid` int NOT NULL AUTO_INCREMENT,
+  `Tname` varchar(255) NOT NULL,
+  PRIMARY KEY (`Tid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 CREATE TABLE onlinelibrary.tagref (
-  `tgid` int NOT NULL AUTO_INCREMENT,
-  `tgdoid` int NOT NULL,
-  `tgtid` int NOT NULL,
-  PRIMARY KEY (`tgid`),
-  FOREIGN KEY (`tgdoid`) REFERENCES documents (`doid`),
-  FOREIGN KEY (`tgtid`) REFERENCES tags (`tid`)
+  `TGid` int NOT NULL AUTO_INCREMENT,
+  `TGdoid` int NOT NULL,
+  `TGtid` int NOT NULL,
+  PRIMARY KEY (`TGid`),
+  FOREIGN KEY (`TGdoid`) REFERENCES documents (`DOid`),
+  FOREIGN KEY (`TGtid`) REFERENCES tags (`Tid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE onlinelibrary.likesdislikesdocs (
+  `LDDid` int NOT NULL AUTO_INCREMENT,
+  `LDDuid` int NOT NULL,
+  `LDDdoid` int NOT NULL,
+  `LDDstatus` varchar(255) NOT NULL,
+  PRIMARY KEY (`LDDid`),
+  FOREIGN KEY (`LDDuid`) REFERENCES user_profile (`Uid`),
+  FOREIGN KEY (`LDDdoid`) REFERENCES documents (`DOid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+CREATE TABLE onlinelibrary.reportdocs (
+  `RDid` int NOT NULL AUTO_INCREMENT,
+  `RDuid` int NOT NULL,
+  `RDdoid` int NOT NULL,
+  PRIMARY KEY (`RDid`),
+  FOREIGN KEY (`RDuid`) REFERENCES user_profile (`Uid`),
+  FOREIGN KEY (`RDdoid`) REFERENCES documents (`DOid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 

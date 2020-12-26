@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Digital Library - Topics</title>
+    <link rel="stylesheet" href="../CSS/topics.css?verion=1.0">
+    <script src="/JS/icons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+    <div class="mobile-view">
+        <i class="fas fa-desktop desktop"></i>
+        <h1 class="no-phone-title">This Website works on <span class="no-phone-title-span">Desktop Screen</span> Size <span class="no-phone-title-span">480x1000 or Higher</span> Only</h1>
+    </div>
+    <div class="sign-lightpage">
+        <div class="signin-box">
+            <p class="signin-header">SIGN IN</p>
+            <form action="" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" name="username" class="input-bar" required>
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="input-bar" required>
+                <button type="submit" class="signin">Sign In</button>
+                <button type="button" class="cancel" onclick="CloseLightBox()">Cancle</button>
+            </form>
+        </div>
+        <div class="signup-box">
+            <p class="signup-header">SIGN UP</p>
+            <form action="" method="POST">
+                <label for="fname">Firsr Name:</label>
+                <input type="text" name="fname" class="input-bar" required>
+                <label for="lanme">Last Name:</label>
+                <input type="text" name="lanme" class="input-bar" required>
+                <label for="email">Email ID:</label>
+                <input type="email" name="email" class="input-bar" required>
+                <label for="username">Username:</label>
+                <input type="text" name="username" class="input-bar" required>
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="input-bar" required>
+                <button type="submit" class="signup">Sign UP</button>
+                <button type="button" class="cancel" onclick="CloseLightBox()">Cancle</button>
+            </form>
+        </div>
+        <div class="user-box">
+            <p class="user-header">MENU</p>
+            <div class="user-button" onclick="Dashboard()">
+                Dashboard
+            </div>
+            <div class="user-button" onclick="Logout()">
+                Logout
+            </div>
+            <div class="user-button" onclick="Profile()">
+                Profile
+            </div>
+            <button type="button" class="cancel" onclick="CloseLightBox()">Cancle</button>
+        </div>
+    </div>
+    <div class="desktop-view">
+        <!-- NAVBAR -->
+        <div class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1 id="website-title">Online Digital Library</h1>
+                </div>
+                <div class="tabs">
+                    <div class="nav-item">
+                        <div class="nav-sign-in" onclick="SignINLightBox()">
+                            Sign In
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-sign-up" onclick="SignUPLightBox()">
+                            Sign Up
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-user" onclick="Menu()">
+                            🔵 Imran Mohsin
+                        </div>
+                    </div>
+                        <!-- Validator: 🔴-->
+                        <!-- Donator: 🟢-->
+                        <!-- User: 🔵-->
+                </div>
+            </div>
+        </div>
+        <!-- MAIN-SECTION -->
+        <div class="main-section">
+            <!-- GRID CONTAINER -->
+            <div class="grid-container">
+                <div class="header">
+                    <span class="topic-title">Blockchain</span><span class="post-count">Total Posts: <span style="margin-left: 10px;color:  rgb(218, 105, 0);"> 100</span>
+                </div>
+                <div class="main">
+                    <table>
+                        <tr>
+                            <td class="tags tag1" onmouseover="HoverTagOver('.span1','.desc-span1','.icon-span1')" onmouseout="HoverTagOut('.span1','.desc-span1','.icon-span1')">
+                                <div class="post-list">
+                                    1. Blockchain in Education: Decentralized Database for Degree                                     
+                                </div>
+                                <div class="post-rate">
+                                    <i class="fas fa-file-pdf iconfile" style="margin-left: 30px;"></i>
+                                    <i class="texticon" style="font-family: 'Audiowide';margin-right: 30px;"">PDF</i>
+                                    <!-- <i class="fas fa-file iconfile"></i> -->
+                                    <!-- <i class="fas fa-image iconfile"></i> -->
+                                    <!-- <i class="fab fa-youtube iconfile"></i> -->
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="author-span">
+                                    <i>~ Mohammed Imran Mohsin 
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half"></i>
+                                </span>
+                                <span class="span span1">Click Here To View<br></span>
+                                <span class="desc-span desc-span1"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque sem eu lacus ullamcorper scelerisque. Suspendisse ac neque interdum, lobortis arcu ut, eleifend dui. Nam scelerisque nunc enim. Donec fermentum ipsum vitae lorem interdum convallis. Cras placerat tempus dui, elementum eleifend felis hendrerit laoreet. Duis ac diam eu nunc vehicula luctus eget sed lectus. In vel neque vel nunc sollicitudin euismod. Sed eget nisl non ipsum viverra bibendum. Sed sagittis at massa ut suscipit. Mauris vel maximus risus. Donec euismod elit nec odio posuere mattis. Pellentesque in pharetra purus, ac eleifend lectus. Pellentesque euismod consequat turpis vel rutrum. Nam vitae mi posuere, aliquet nisl vel, ullamcorper sapien. </span>
+                                <span class="icon-span icon-span1">
+                                    <div class="counts">100 <i class="fas fa-thumbs-up"></i></div>                    <div class="counts">21 <i class="fas fa-thumbs-down"></i></div>
+                                    <div class="counts">1 <i class="fas fa-flag"></i></div>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tags tag2" onmouseover="HoverTagOver('.span2','.desc-span2','.icon-span2')" onmouseout="HoverTagOut('.span2','.desc-span2','.icon-span2')">
+                                <div class="post-list">
+                                    2. Machine Learning & Data Science using Sklearn and Python 3.9                                    
+                                </div>
+                                <div class="post-rate">
+                                    <i class="fab fa-youtube iconfile" style="margin-left: 30px;"></i>
+                                    <i class="texticon" style="font-family: 'Audiowide';margin-right: 30px;">Youtube</i>
+                                    <!-- <i class="fas fa-file-pdf iconfile" style="margin-left: 30px;"></i> -->
+                                    <!-- <i class="fas fa-file iconfile"></i> -->
+                                    <!-- <i class="fas fa-image iconfile"></i> -->
+                            
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half"></i>
+                                </div>
+                                <span class="author-span">
+                                    <i>~ Lewis Hamilton
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </span>
+                                <span class="span span2">Click Here To View<br></span>
+                                <span class="desc-span desc-span2"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque sem eu lacus ullamcorper scelerisque. Suspendisse ac neque interdum, lobortis arcu ut, eleifend dui. Nam scelerisque nunc enim. Donec fermentum ipsum vitae lorem interdum convallis. Cras placerat tempus dui, elementum eleifend felis hendrerit laoreet. Duis ac diam eu nunc vehicula luctus eget sed lectus. In vel neque vel nunc sollicitudin euismod. Sed eget nisl non ipsum viverra bibendum. Sed sagittis at massa ut suscipit. Mauris vel maximus risus. Donec euismod elit nec odio posuere mattis. Pellentesque in pharetra purus, ac eleifend lectus. Pellentesque euismod consequat turpis vel rutrum. Nam vitae mi posuere, aliquet nisl vel, ullamcorper sapien. </span>
+                                <span class="icon-span icon-span2">
+                                    <div class="counts">100 <i class="fas fa-thumbs-up"></i></div>                    <div class="counts">21 <i class="fas fa-thumbs-down"></i></div>
+                                    <div class="counts">1 <i class="fas fa-flag"></i></div>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tags tag3" onmouseover="HoverTagOver('.span3','.desc-span3','.icon-span3')" onmouseout="HoverTagOut('.span3','.desc-span3','.icon-span3')">
+                                <div class="post-list">
+                                    3. Ethereum Dapp                                   
+                                </div>
+                                <div class="post-rate">
+                                    <!-- <i class="fab fa-youtube iconfile" style="margin-left: 30px;"></i> -->
+                                    <!-- <i class="fas fa-file-pdf iconfile" style="margin-left: 30px;"></i> -->
+                                    <i class="fas fa-file iconfile" style="margin-left: 30px;"></i>
+                                    <!-- <i class="fas fa-image iconfile" style="margin-left: 30px;"></i> -->
+                                    <i class="texticon" style="font-family: 'Audiowide';margin-right: 30px;">Article</i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half"></i>
+                                </div>
+                                <span class="author-span">
+                                    <i>~ Valteri Bottas
+                                    <i class="fas fa-star-half"></i>
+                                </span>
+                                <span class="span span3">Click Here To View<br></span>
+                                <span class="desc-span desc-span3"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque sem eu lacus ullamcorper scelerisque. Suspendisse ac neque interdum, lobortis arcu ut, eleifend dui. Nam scelerisque nunc enim. Donec fermentum ipsum vitae lorem interdum convallis. Cras placerat tempus dui, elementum eleifend felis hendrerit laoreet. Duis ac diam eu nunc vehicula luctus eget sed lectus. In vel neque vel nunc sollicitudin euismod. Sed eget nisl non ipsum viverra bibendum. </span>
+                                <span class="icon-span icon-span3">
+                                    <div class="counts">100 <i class="fas fa-thumbs-up"></i></div>                    <div class="counts">21 <i class="fas fa-thumbs-down"></i></div>
+                                    <div class="counts">1 <i class="fas fa-flag"></i></div>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tags tag4" onmouseover="HoverTagOver('.span4','.desc-span4')" onmouseout="HoverTagOut('.span4','.desc-span4')">
+                                4. Blockchain <br><span class="span span4">10 Posts<br></span><span class="desc-span desc-span4">(Click Here)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tags tag5" onmouseover="HoverTagOver('.span5','.desc-span5')" onmouseout="HoverTagOut('.span5','.desc-span5')">
+                                5. Blockchain <br><span class="span span5">10 Posts<br></span><span class="desc-span desc-span5">(Click Here)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tags tag6" onmouseover="HoverTagOver('.span6','.desc-span6')" onmouseout="HoverTagOut('.span6','.desc-span6')">
+                                6. Blockchain <br><span class="span span6">10 Posts<br></span><span class="desc-span desc-span6">(Click Here)</span>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                </div>
+                <div class="footer">FOOTER</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function HoverTagOver(spanA,spanB,spanC){
+            anime({
+                targets: spanA,
+                fontSize: "24px",
+                opacity:1,
+                begin: BLOCK(spanA),
+                duration:1000
+            });
+            anime({
+                targets: spanB,
+                top:"20px",
+                fontSize: "18px",
+                opacity:1,
+                begin: BLOCK(spanB),
+                duration:1000
+            });
+            anime({
+                targets: spanC,
+                fontSize: "18px",
+                opacity:1,
+                begin: BLOCK(spanC),
+                duration:1000
+            });
+        }
+        function HoverTagOut(spanA,spanB,spanC){
+            anime({
+                targets: spanA,
+                fontSize: "12px",
+                opacity:0,
+                begin: NONE(spanA),
+                duration:1000
+            });
+            anime({
+                targets: spanB,
+                fontSize: "8px",
+                opacity:0,
+                begin: NONE(spanB),
+                duration:1000
+            });
+            anime({
+                targets: spanC,
+                fontSize: "8px",
+                opacity:0,
+                begin: NONE(spanC),
+                duration:1000
+            });
+        }
+
+        function BLOCK(span) {
+            document.querySelector(span).style.display = 'flex';
+        }
+
+        function NONE(span) {
+            document.querySelector(span).style.display = 'none';
+        }
+
+        function CloseLightBox(){
+            document.querySelector('.sign-lightpage').style.display = 'none';
+            document.querySelector('.signup-box').style.display = 'none';
+            document.querySelector('.signin-box').style.display = 'none';
+            document.querySelector('.user-box').style.display = 'none';
+        }
+
+        function SignINLightBox(){
+            document.querySelector('.sign-lightpage').style.display = 'flex';
+            document.querySelector('.signup-box').style.display = 'none';
+            document.querySelector('.signin-box').style.display = 'flex';
+            document.querySelector('.user-box').style.display = 'none';
+        }
+
+        function SignUPLightBox(){
+            document.querySelector('.sign-lightpage').style.display = 'flex';
+            document.querySelector('.signup-box').style.display = 'flex';
+            document.querySelector('.signin-box').style.display = 'none';
+            document.querySelector('.user-box').style.display = 'none';
+        }
+
+        function SignUPLightBox(){
+            document.querySelector('.sign-lightpage').style.display = 'flex';
+            document.querySelector('.signup-box').style.display = 'flex';
+            document.querySelector('.signin-box').style.display = 'none';
+            document.querySelector('.user-box').style.display = 'none';
+        }
+
+        function Menu(){
+            document.querySelector('.sign-lightpage').style.display = 'flex';
+            document.querySelector('.signup-box').style.display = 'none';
+            document.querySelector('.signin-box').style.display = 'none';
+            document.querySelector('.user-box').style.display = 'flex';
+        }
+
+        function Logout(){
+            console.log("LOGOUT")
+        }
+        
+        function Dashboard(){
+            console.log("DASHBOARD")
+        }
+
+        function Profile(){
+            console.log("PROFILE")
+        }
+
+    </script>
+</body>
+</html>

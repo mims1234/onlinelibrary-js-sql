@@ -1,0 +1,477 @@
+@font-face {
+    font-family: 'Audiowide';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Audiowide'), url('../FONT/Audiowide-Regular.ttf')
+    format('truetype');
+}
+
+@media only screen and (max-device-width : 1000px) {
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+    }
+
+    .desktop-view, .signin-lightpage {
+        display: none;
+    }
+
+    .mobile-view {
+        position: absolute;
+        padding:10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 8px;
+        width: 100vw;
+        height: 100vh;
+        color:white;
+        font-family: "Audiowide";
+        font-weight: normal;
+        background: radial-gradient(#181818,#000000);
+    }
+
+    .desktop, .no-phone-title-span {
+        animation: colorfade 5s infinite ease-in;
+        margin:10px 0px;
+    }
+
+    .desktop {
+        font-size: 100px;
+        margin-bottom: 25px;
+    }
+
+    @keyframes colorfade{
+        0%{
+            color:#ffffff;
+        }
+        50%{
+            color:#ff0000;
+        }
+        100%{
+            color:#ffffff;
+        }
+    }
+}
+
+@media only screen and (min-device-width : 1000px) {
+
+    .mobile-view, .signin-lightpage {
+        display: none;
+    }
+
+    * {
+        margin:0;
+        padding:0;
+    }
+
+    body{
+        background-color: #000;
+        font-family: 'Audiowide';
+        color:black;
+    }
+
+    #website-title{
+        color: black;
+    }
+
+    /* SIGN IN */
+    .sign-lightpage{
+        display: none;
+        font-family: 'Audiowide';
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        height: 100vh;
+        width: 100vw;
+        z-index: 1000;  
+        background-color: rgba(0, 0, 0, 0.726);      
+    }
+
+    form{
+        padding:50px;
+    }
+
+    .input-bar{
+        height:20px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        padding: 3px;
+        font-family: "Audiowide";
+    }
+
+    .signin-box{
+        display: none;
+        flex-direction: column;
+        height:300px;
+        width: 500px;
+        border-radius: 20%;
+        font-size:24px;
+        background-color: white;
+        overflow: hidden;
+    }
+
+    .signin-header{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+        height: 100px;
+        color: white;
+        font-size: 40px;
+        background-color: rgb(35, 112, 255);
+    }
+
+    .signin{
+        border-radius: 20%;
+        color:white;
+        background-color: rgb(35, 112, 255);
+        border-radius: 20px;
+        margin:10px 0px;
+        padding: 5px 20px;
+        font-size: large;
+        font-family: 'Audiowide';
+        transition: 0.3s ease-in-out;
+    }
+
+    .signin:hover{
+        background-color: rgb(0, 0, 0);
+        font-size: large;
+        font-family: 'Audiowide';
+    }
+
+    .signup-header{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+        height: 100px;
+        color: white;
+        font-size: 40px;
+        background-color:  rgb(0, 202, 10);
+    }
+
+    .signup-box{
+        display: none;
+        flex-direction: column;
+        height:400px;
+        width: 500px;
+        border-radius: 20%;
+        font-size:24px;
+        background-color: white;
+        overflow: hidden;
+    }
+
+    .signup{
+        border-radius: 20%;
+        color:white;
+        background-color: rgb(0, 202, 10);
+        border-radius: 20px;
+        margin:10px 0px;
+        padding: 5px 20px;
+        font-size: large;
+        font-family: 'Audiowide';
+        transition: 0.3s ease-in-out;
+    }
+
+    .signup:hover{
+        background-color:  rgb(0, 0, 0);
+        font-size: large;
+        font-family: 'Audiowide';
+    }
+
+    .user-header{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        height: 100px;
+        color: white;
+        font-size: 20px;
+        background-color:  rgb(218, 105, 0);
+    }
+
+    .user-box{
+        display: none;
+        flex-direction: column;
+        height:300px;
+        width: 300px;
+        border-radius: 20%;
+        font-size:22px;
+        background-color: white;
+        overflow: hidden;
+    }
+
+    .user-button{
+        border-radius: 20%;
+        color:white;
+        text-align: center;
+        background-color:  rgb(35, 112, 255);
+        border-radius: 20px;
+        margin:10px 0px;
+        padding: 5px 20px;
+        font-size: large;
+        font-family: 'Audiowide';
+        transition: 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    .user-button:hover{
+        background-color:  rgb(0, 0, 0);
+        font-size: large;
+        font-family: 'Audiowide';
+    }
+
+    .cancel{
+        border-radius: 20%;
+        color:white;
+        background-color: rgb(196, 0, 0);
+        border-radius: 20px;
+        margin:10px 0px;
+        padding: 5px 20px;
+        font-size: large;
+        font-family: 'Audiowide';
+        transition: 0.3s ease-in-out;
+    }
+
+    .cancel:hover{
+        background-color:  rgb(0, 0, 0);
+        font-size: large;
+        font-family: 'Audiowide';
+    }
+
+
+    /* NAVBAR */
+    .container{
+        display: flex;
+        flex-direction: rows;
+    }
+
+    .navbar {
+        position:fixed;
+        height:55px;
+        width:100vw;
+        background-color: rgb(218, 105, 0);
+        z-index:995;
+        opacity: 1s;
+    }
+
+    .logo{
+        position: absolute;
+        display: flex;
+        justify-content: left;
+        padding-top: .5em;
+        padding-left: .5em;
+        height:55px;
+        width: 100vw;
+    }
+
+    .tabs{
+        display: flex;
+        justify-content:flex-end;
+        padding-top: 0.8em;
+        height:55px;
+        width: 100vw;
+        z-index: 999;
+    }
+
+    .nav-item{
+        padding-right: 30px;
+    }
+
+    .nav-sign-in, .nav-sign-up, .nav-user{
+        border-radius: 20px;
+        padding: 5px 20px;
+        font-size: large;
+    }
+
+    .nav-sign-in{
+        color:black;
+        background-color: rgb(94, 191, 221);
+        cursor: pointer;
+        z-index: 999;
+    }
+
+    .nav-sign-up{
+        color:black;
+        background-color: rgb(0, 202, 10);
+        cursor: pointer;
+        z-index: 999;
+    }
+
+    .nav-user{
+        color:black;
+        background-color:white;
+        cursor: pointer;
+        z-index: 999;
+    }
+
+    #website-title{
+        min-block-size: 10px;
+    }
+
+    /* MAIN SECTION */
+    .main-section{
+        padding-top:55px;
+    }
+
+    .grid-container{
+        display: grid;
+        grid-template-areas:
+          'header header headerd'
+          'main main main'
+          'main main main'
+          'footer footer footer';
+        /* background-color: #2196F3; */
+        /* padding: 10px; */
+    }
+
+    .header{ grid-area: header;}
+    .rightside{ grid-area: rightside;}
+    .main{ grid-area: main;}
+    .leftside{ grid-area: leftside;}
+    .footer{ grid-area: footer;}
+
+    .header{
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 10vh;
+        font-size: 30px;
+        color: white;
+    }
+
+    .topic-title{
+        width: 38vw;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .post-count{
+        width: 37vw;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .main{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        height: 90vh;
+    }
+
+    .tags{
+        display: flex;
+        flex-direction: column;
+        color: white;
+        background-color:rgb(59, 59, 59);
+        height: 80px;
+        width: 75vw;
+        min-width: 1000px;
+        padding: 10px 0 20px 10px;
+        font-size: 26px;
+        transition: 0.3s ease-in-out;
+    }
+
+    .post-rate{
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .fa-star, .fa-star-half{
+        color: rgb(218, 203, 0);
+    }
+
+    .author-span{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size:12px ;
+        opacity: 1;
+        color: rgb(218, 105, 0);
+        transition: 0.3s ease-in-out;
+    }
+
+    .span{
+        display: none;
+        font-size:20px ;
+        opacity: 0;
+        color: rgb(218, 105, 0);
+        cursor: pointer;
+    }
+
+    .desc-span{
+        display: none;
+        font-size:8px ;
+        opacity: 0;
+        color:black;
+    }
+
+    .icon-span{
+        display: none;
+        font-size:8px ;
+        opacity: 0;
+        color:black;
+        margin-left: 20px;
+    }
+
+    .fa-thumbs-down{
+        transition: 0.3s ease-in-out;
+    }
+
+    .fa-thumbs-up{
+        transition: 0.3s ease-in-out;
+    }
+
+    .counts{
+        margin: 20px 0 0 0;
+        margin-right: 30px;
+        font-size: 28px;
+        font-family: "Audiowide";
+        cursor: pointer;
+    }
+
+    .counts .fa-thumbs-down:hover{
+        color: rgb(218, 0, 0);
+    }
+
+    .counts .fa-thumbs-up:hover{
+        color: rgb(18, 218, 0);
+    }
+
+    .tags:hover {
+        font-size: 30px;
+        color:black;
+        background-color: rgb(255, 255, 255);
+        height: auto;
+        transition: 0.1s ease-in-out;
+    }
+
+    .tags:hover .author-span{
+        font-size: 18px;
+        margin-left: 40vw;
+        color: rgb(218, 105, 0);
+        cursor: pointer;
+    }
+
+    .tags:hover .iconfile,.tags:hover .texticon{
+        font-size: 30px;
+        color: rgb(218, 0, 0);
+    }
+
+    .footer{
+        position: relative;
+        width: 100vw;
+        height: 10vh;
+        border-style: solid;
+        border-color: blue;
+    }
+}
