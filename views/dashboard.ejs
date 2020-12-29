@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Digital Library - Topics</title>
+    <link rel="stylesheet" href="../CSS/base.css">
+    <link rel="stylesheet" href="../CSS/dashboard.css">
+    <script src="/JS/icons.js"></script>
+    <!-- ANIMEJS -->
+    <script src="/js/anime.min.js"></script> 
+</head>
+<body>
+    <!-- BASE PARTIALS -->
+    <%- include('template-partials/base.ejs') %>
+    <!-- MAIN-SECTION -->
+    <div class="main-section">
+        <!-- GRID CONTAINER -->
+        <div class="grid-container">
+            <div class="header">
+                <div class="header-title">DASHBOARD</div>
+                <div class="loggedin-user">Mhd Imran Mohsin</div>
+                <div class="loggedin-user-work C">CONTRIBUTOR</div>
+                <div class="loggedin-user-work V">VALIDATOR</div>
+            </div>
+            <div class="main">
+                <div class="graph_bar">
+                    <div class="graph-canvas-main">
+                        <div class="graph-title">TOP 10 MOST VIEWED POST - #MYPOST</div>
+                        <canvas id="myChart" width="100%" height="25%" style="min-height:100px;min-width: 400px;"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="header2">
+                <div class="header-title">ALL POST</div>
+            </div>
+            <div class="main2">
+                <table>
+                    <tr>
+                        <td class="tags">
+                            <div class="grid-container-tags">
+                                <div class="tag-type">
+                                    <!-- <i class="fab fa-youtube iconfile"></i> -->
+                                    <i class="fas fa-image iconfile"></i>
+                                    <div class="type-name">Image</div>
+                                </div>
+                                <div class="tag-title">
+                                    <div class="title-text">Machine Learning Sklearn</div>
+                                    <div class="author-span">Mohammed Imran Mohsin</div>
+                                </div>
+                                <div class="tag-tags tag-icon">
+                                    <div class="type-name-iconfile">Tags</div>
+                                    <i class="fas fa-tags iconfile"></i>
+                                </div>
+                                <div class="tag-view tag-icon">
+                                    <div class="type-name-iconfile">534</div>
+                                    <i class="fas fa-eye iconfile"></i>
+                                </div>
+                                <div class="tag-link tag-icon" onclick="Edit()">
+                                    <div class="type-name-iconfile" >Edit</div>
+                                    <i class="fas fa-edit iconfile"></i>
+                                </div>
+                                <div class="tag-desc tag-icon" onclick="Info()">
+                                    <div class="type-name-iconfile">Preview</div>
+                                    <i class="fas fa-info-circle iconfile"></i>
+                                </div>
+                                <form action="delete" method="POST" class="delete-post-form">
+                                    <div class="tag-report tag-icon" onClick="javascript:this.parentNode.submit();">
+                                        <div class="type-name-iconfile">Delete</div>
+                                        <i class="fas fa-trash-alt iconfile"></i>
+                                        <input type="number" name="id" value="1" style="display: none;">
+                                    </div>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tags">
+                            <div class="grid-container-tags">
+                                <div class="tag-type">
+                                    <!-- <i class="fab fa-youtube iconfile"></i> -->
+                                    <i class="fas fa-image iconfile"></i>
+                                    <div class="type-name">Image</div>
+                                </div>
+                                <div class="tag-title">
+                                    <div class="title-text">Machine Learning Sklearn</div>
+                                    <div class="author-span">Mohammed Imran Mohsin</div>
+                                </div>
+                                <div class="tag-tags tag-icon" onclick="Tags()">
+                                    <div class="type-name-iconfile">Tags</div>
+                                    <i class="fas fa-tags iconfile"></i>
+                                </div>
+                                <div class="tag-view tag-icon">
+                                    <div class="type-name-iconfile">534</div>
+                                    <i class="fas fa-eye iconfile"></i>
+                                </div>
+                                <div class="tag-link tag-icon" onclick="Edit()">
+                                    <div class="type-name-iconfile" >Edit</div>
+                                    <i class="fas fa-edit iconfile"></i>
+                                </div>
+                                <div class="tag-desc tag-icon" onclick="Info()">
+                                    <div class="type-name-iconfile">Preview</div>
+                                    <i class="fas fa-info-circle iconfile"></i>
+                                </div>
+                                <form action="delete" method="POST" class="delete-post-form">
+                                    <div class="tag-report tag-icon" onClick="javascript:this.parentNode.submit();">
+                                        <div class="type-name-iconfile">Delete</div>
+                                        <i class="fas fa-trash-alt iconfile"></i>
+                                        <input type="number" name="id" value="1" style="display: none;">
+                                    </div>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="footer">MADE BY <span>K A SAMARASIMHA REDDY</span> AND <span>AAYUSH SINGH</span></div>
+        </div>
+        <div class="bottomspace"></div>
+    </div>
+    <!-- CHARTJS -->
+    <script src="/js/Chart.bundle.min.js"></script> 
+    <script>
+
+    var myChart=null;
+    var Line1 = [32,24,73,50,10,2]
+
+    createChart = async() => {
+        if(myChart!=null){
+            myChart.destroy();
+        }
+        var ctx = document.getElementById('myChart').getContext('2d');
+        myChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ["Blockchain ","Machine Learning ","Post 1","Post 1","Post 1","Post 1"],
+                datasets: [
+                    {
+                    label: 'Views',
+                    data: Line1,
+                    backgroundColor: 'rgb(255, 0, 34, 0.1)',
+                    borderColor: 'rgb(255, 0, 34)',
+                    borderWidth: 2,
+                    pointHoverBackgroundColor:"rgb(255, 0, 34)",
+                    pointHoverRadius:5,
+                }]
+            },
+            options: {
+                scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true,
+                                fontColor: 'white'
+                            },
+                            scaleLabel: {
+                                display: true,
+                                fontColor: 'white',
+                                labelString: 'Posts',
+                                fontSize:22,
+                                beginAtZero: true
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                beginAtZero:true,
+                                fontColor: 'white'
+                            },
+                            scaleLabel: {
+                                display: true,
+                                fontColor: 'white',
+                                labelString: 'Views',
+                                fontSize:22,
+                                beginAtZero: true
+                            }
+                        }]
+                },  
+                legend: {
+                    display:false,
+                    labels: {
+                        fontColor: 'white',
+                        fontSize:16,
+                        usePointStyle:true,
+                    }
+                },
+                animation: {
+                        duration: 0 // general animation time
+                    },
+                hover: {
+                    animationDuration: 250 // duration of animations when hovering an item
+                },
+                responsiveAnimationDuration: 1000,
+                tooltips: {
+                    mode: 'index',
+                    position:"average",
+                    titleFontSize:10
+                }
+            }
+        });
+    }
+
+    createChart()
+
+    function GetString123(){
+            s = document.getElementById("textarea-tags-add");
+            a = s.value.split(",");
+            b = []
+            a.forEach(element => {
+                b.push(element.replace(/[^a-zA-Z ]/g, ""))
+            });
+            console.log(b);
+    }
+
+    function BLOCK(span) {document.querySelector(span).style.display = 'flex';}
+    function NONE(span) {document.querySelector(span).style.display = 'none';}
+
+    function CloseLightBox(){
+        document.querySelector('.sign-lightpage').style.display = 'none';
+        CloseAllBoxes()
+    }
+
+    function SignINLightBox(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.signin-box').style.display = 'flex';
+    }
+
+    function SignUPLightBox(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.signup-box').style.display = 'flex';
+    }
+
+    function Add_Post(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.add-post-box').style.display = 'flex';
+    }
+
+    function Info(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.info-box').style.display = 'flex';
+    }
+
+    function Edit(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.edit-post-box').style.display = 'flex';
+    }
+
+    function Tags(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.tag-box').style.display = 'block';
+    }
+
+    function ProfileView(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.profile-box').style.display = 'flex';
+    }
+
+    function Delete(){
+        FORM = document.querySelector('delete-post-form');
+        console.log("Delete")
+    }
+
+    function OpenLightBox(){
+        document.querySelector('.sign-lightpage').style.display = 'flex';
+    }
+
+    function CloseAllBoxes(){
+        document.querySelector('.signup-box').style.display = 'none';
+        document.querySelector('.signin-box').style.display = 'none';
+        document.querySelector('.info-box').style.display = 'none';
+        document.querySelector('.add-post-box').style.display = 'none';
+        document.querySelector('.edit-post-box').style.display = 'none';
+        document.querySelector('.profile-box').style.display = 'none';
+        document.querySelector('.profile-edit-box').style.display = 'none';
+        document.querySelector('.tag-box').style.display = 'none';
+    }
+
+    function GoHome(){
+        window.location.href = `http://localhost:4030/`
+    }
+
+    function Logout(){
+        console.log("LOGOUT")
+    }
+
+    function Members(){
+        window.location.href = `http://localhost:4030/members`
+    }
+    
+    function Dashboard(){
+        window.location.href = `http://localhost:4030/dashboard`
+    }
+
+    function Profile(){
+        window.location.href = `http://localhost:4030/profile`
+    }
+
+    function Validator(){
+        window.location.href = `http://localhost:4030/validatorpost`
+    }
+
+    </script>
+</body>
+</html>

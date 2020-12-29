@@ -60,8 +60,8 @@
 
     .topic-title{
         display: flex;
-        justify-content: flex-start;
-        width: 40vw;
+        justify-content: center;
+        width: 100vw;
     }
 
     .post-count{
@@ -97,41 +97,39 @@
         transition: 0.3s ease-in-out;
     }
 
+    .tags-edit{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        height: auto;
+        min-height: 8vh;
+        width: 75vw;
+        font-size:calc(5px + 1.5vw);
+        transition: 0.3s ease-in-out;
+    }
+
     .grid-container-tags{
         display: flex;
         flex-direction: row;
     }
 
-    .tag-type{
-        display: flex;
-        width: 5vw;
-        height: 8vh;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        color: white;
-        background-color: rgb(128, 0, 0);
-        border-width: thin;
-        border-style: solid;
-        border-color: transparent;
-        transition: 0.3s ease-in-out;
+    .iconfile{
+        font-size:calc(15px + 0.5vw + 0.5vh);
     }
 
-        .iconfile{
-            font-size:calc(15px + 0.5vw + 0.5vh);
-        }
-
-        .type-name{
-            margin-top: 2px;
-            font-size:calc(1px + 1vw);
-        }
+    .type-name{
+        margin-top: 2px;
+        font-size:calc(1px + 1vw);
+    }
 
     .tag-title{
         display: flex;
-        width: 55vw;
+        width: 70vw;
         height: 8vh;
-        margin-left: 15px;
         justify-content: center;
+        align-items: center;
         flex-direction: column;
         color: white;
         border-width: thin;
@@ -143,21 +141,17 @@
     .tag-icon{
         display: flex;
         width: 5vw;
-        height: 8vh;
-        /* margin-left: 15px; */
+        height: 34vh;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         color: white;
         background-color: rgb(0, 128, 43);
-        border-width: thin;
-        border-style: solid;
-        border-color: transparent;
         cursor: pointer;
         transition: 0.2s ease-in-out;
     }
 
-    .tag-link{
+    .tag-edit{
         background-color: rgb(0, 128, 43);
     }
 
@@ -180,7 +174,7 @@
         transition: 0.2s ease-in-out;
     }
 
-    .tag-link:hover,
+    .tag-edit:hover,
     .tag-desc:hover,
     .tag-report:hover{
         color:  rgb(255, 255, 255);
@@ -189,7 +183,7 @@
 
     .tag-report:hover .type-name-iconfile,
     .tag-desc:hover .type-name-iconfile,
-    .tag-link:hover .type-name-iconfile{
+    .tag-edit:hover .type-name-iconfile{
         color:  rgb(255, 255, 255);
         font-size:calc(0px + 1vw);
         opacity: 1;
@@ -207,12 +201,10 @@
 
     .tags:hover .author-span{
         font-size:calc(18px + 0.2vw); ;
-        margin-left: 1vw;
         color:#F2771A;
     }
 
     .tags:hover .tag-title{
         font-size:calc(15px + 1.5vw);
     }
-
 }

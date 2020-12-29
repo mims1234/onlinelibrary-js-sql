@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Digital Library - Topics</title>
     <link rel="stylesheet" href="../CSS/base.css">
-    <link rel="stylesheet" href="../CSS/topics.css">
+    <link rel="stylesheet" href="../CSS/members.css">
     <script src="/JS/icons.js"></script>
     <!-- ANIMEJS -->
     <script src="/js/anime.min.js"></script> 
@@ -18,8 +18,7 @@
         <!-- GRID CONTAINER -->
         <div class="grid-container">
             <div class="header">
-                <span class="topic-title">Blockchain</span>
-                <span class="post-count">Total Posts: <span> 3</span></span>
+                MEMBERS
             </div>
             <div class="main">
                 <table>
@@ -28,24 +27,24 @@
                             <div class="grid-container-tags">
                                 <div class="tag-type">
                                     <!-- <i class="fab fa-youtube iconfile"></i> -->
-                                    <i class="fas fa-file-pdf iconfile"></i>
-                                    <div class="type-name">PDF</div>
+                                    <i class="fas fa-user iconfile"></i>
+                                    <div class="type-name">USER</div>
                                 </div>
                                 <div class="tag-title">
-                                    <div class="title-text">Machine Learning Sklearn</div>
-                                    <div class="author-span">Mohammed Imran Mohsin</div>
+                                    <div class="title-text">Mohammed Imran Mohsin</div>
+                                    <div class="author-span">Post: <span>300</span> Views: <span>123</span></div>
                                 </div>
-                                <div class="tag-link tag-icon">
-                                    <div class="type-name-iconfile">Link</div>
-                                    <i class="fas fa-link iconfile"></i>
+                                <div class="tag-validator tag-icon">
+                                    <div class="type-name-iconfile">Make Validator</div>
+                                    <i class="fas fa-user-cog iconfile"></i>
                                 </div>
-                                <div class="tag-desc tag-icon" onclick="Info()">
-                                    <div class="type-name-iconfile">Info</div>
-                                    <i class="fas fa-info-circle iconfile"></i>
-                                </div>
-                                <div class="tag-report tag-icon">
-                                    <div class="type-name-iconfile">Report</div>
-                                    <i class="fas fa-flag iconfile"></i>
+                                <!-- <div class="tag-contributer tag-icon">
+                                    <div class="type-name-iconfile">Make Contributor</div>
+                                    <i class="fas fa-user iconfile"></i>
+                                </div> -->
+                                <div class="tag-desc tag-icon" onclick="ProfileView()">
+                                    <div class="type-name-iconfile">Profile</div>
+                                    <i class="fas fa-id-card iconfile"></i>
                                 </div>
                             </div>
                         </td>
@@ -55,51 +54,24 @@
                             <div class="grid-container-tags">
                                 <div class="tag-type">
                                     <!-- <i class="fab fa-youtube iconfile"></i> -->
-                                    <i class="fas fa-file iconfile"></i>
-                                    <div class="type-name">File</div>
+                                    <i class="fas fa-user-cog iconfile"></i>
+                                    <div class="type-name">VALIDATOR</div>
                                 </div>
                                 <div class="tag-title">
-                                    <div class="title-text">Machine Learning Sklearn</div>
-                                    <div class="author-span">Mohammed Imran Mohsin</div>
+                                    <div class="title-text">Samaraha Simha Reddy</div>
+                                    <div class="author-span">Post: <span>125</span> Views: <span>231</span></div>
                                 </div>
-                                <div class="tag-link tag-icon">
-                                    <div class="type-name-iconfile">Link</div>
-                                    <i class="fas fa-link iconfile"></i>
+                                <!-- <div class="tag-validator tag-icon">
+                                    <div class="type-name-iconfile">Make Validator</div>
+                                    <i class="fas fa-user-cog iconfile"></i>
+                                </div> -->
+                                <div class="tag-contributer tag-icon">
+                                    <div class="type-name-iconfile">Make Contributor</div>
+                                    <i class="fas fa-user iconfile"></i>
                                 </div>
-                                <div class="tag-desc tag-icon" onclick="Info()">
-                                    <div class="type-name-iconfile">Info</div>
-                                    <i class="fas fa-info-circle iconfile"></i>
-                                </div>
-                                <div class="tag-report tag-icon">
-                                    <div class="type-name-iconfile">Report</div>
-                                    <i class="fas fa-flag iconfile"></i>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tags">
-                            <div class="grid-container-tags">
-                                <div class="tag-type">
-                                    <i class="fab fa-youtube iconfile"></i>
-                                    <!-- <i class="fas fa-file-pdf iconfile"></i> -->
-                                    <div class="type-name">Youtube</div>
-                                </div>
-                                <div class="tag-title">
-                                    <div class="title-text">Machine Learning Sklearn</div>
-                                    <div class="author-span">Mohammed Imran Mohsin</div>
-                                </div>
-                                <div class="tag-link tag-icon">
-                                    <div class="type-name-iconfile">Link</div>
-                                    <i class="fas fa-link iconfile"></i>
-                                </div>
-                                <div class="tag-desc tag-icon" onclick="Info()">
-                                    <div class="type-name-iconfile">Info</div>
-                                    <i class="fas fa-info-circle iconfile"></i>
-                                </div>
-                                <div class="tag-report tag-icon">
-                                    <div class="type-name-iconfile">Report</div>
-                                    <i class="fas fa-flag iconfile"></i>
+                                <div class="tag-desc tag-icon" onclick="ProfileView()">
+                                    <div class="type-name-iconfile">Profile</div>
+                                    <i class="fas fa-id-card iconfile"></i>
                                 </div>
                             </div>
                         </td>
@@ -150,6 +122,18 @@
         document.querySelector('.edit-post-box').style.display = 'flex';
     }
 
+    function Tags(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.tag-box').style.display = 'flex';
+    }
+
+    function ProfileView(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.profile-box').style.display = 'flex';
+    }
+
     function Delete(){
         FORM = document.querySelector('delete-post-form');
         console.log("Delete")
@@ -178,10 +162,6 @@
         console.log("LOGOUT")
     }
 
-    function Topic(){
-        window.location.href = `http://localhost:4030/topic`
-    }
-
     function Members(){
         window.location.href = `http://localhost:4030/members`
     }
@@ -193,7 +173,7 @@
     function Profile(){
         window.location.href = `http://localhost:4030/profile`
     }
-
+    
     function Validator(){
         window.location.href = `http://localhost:4030/validatorpost`
     }

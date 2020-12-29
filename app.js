@@ -50,41 +50,35 @@ Password = process.env.psd
 //     });
 // })
 
-// app.post("/home" , (req,res) => {
-
-//     user = req.body.user
-//     pass = req.body.pass
-//     if(Username===user && Password===pass){
-
-//         res.render("home",{
-//             username:user
-//         })
-//     }
-//     else {
-//         res.redirect("/loginerr")
-//     }
-// })
-
-// app.get("/login" , (req,res) => {
-//     res.render("login",{
-//         message:""
-//     })
-// })
-
-// app.get("/loginerr" , (req,res) => {
-//     res.render("login",{
-//         message:"ERROR Invalid Username and Password"
-//     })
-// })
-
 // TESTING
 
 app.get("/" , (req,res) => {
         res.render("home")
 })
 
+app.post("/delete" , (req,res) => {
+    console.log(req.body)
+    res.send(JSON.stringify(req.body))
+})
+
 app.get("/topic" , (req,res) => {
     res.render("topic")
+})
+
+app.get("/dashboard" , (req,res) => {
+    res.render("dashboard")
+})
+
+app.get("/members" , (req,res) => {
+    res.render("members")
+})
+
+app.get("/validatorpost" , (req,res) => {
+    res.render("validatorpost")
+})
+
+app.get("/profile" , (req,res) => {
+    res.render("profile")
 })
 
 

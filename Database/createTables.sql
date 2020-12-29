@@ -39,11 +39,10 @@ CREATE TABLE onlinelibrary.documents (
   `DOid` int NOT NULL AUTO_INCREMENT,
   `DOlink` varchar(255) NOT NULL,
   `DOtype` varchar(255) NOT NULL,
-  `DOlikes` int NOT NULL,
-  `DOdislikes` int NOT NULL,
   `DOreport` int NOT NULL,
   `DOstatus` varchar(255) NOT NULL,
   `DOvalid` varchar(255) NOT NULL,
+  `DOviews` int NOT NULL,
   `DOdid` int NOT NULL,
   PRIMARY KEY (`DOid`),
   FOREIGN KEY (`DOdid`) REFERENCES donators (`Did`)
@@ -71,16 +70,6 @@ CREATE TABLE onlinelibrary.tagref (
   PRIMARY KEY (`TGid`),
   FOREIGN KEY (`TGdoid`) REFERENCES documents (`DOid`),
   FOREIGN KEY (`TGtid`) REFERENCES tags (`Tid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
-
-CREATE TABLE onlinelibrary.likesdislikesdocs (
-  `LDDid` int NOT NULL AUTO_INCREMENT,
-  `LDDuid` int NOT NULL,
-  `LDDdoid` int NOT NULL,
-  `LDDstatus` varchar(255) NOT NULL,
-  PRIMARY KEY (`LDDid`),
-  FOREIGN KEY (`LDDuid`) REFERENCES user_profile (`Uid`),
-  FOREIGN KEY (`LDDdoid`) REFERENCES documents (`DOid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 CREATE TABLE onlinelibrary.reportdocs (

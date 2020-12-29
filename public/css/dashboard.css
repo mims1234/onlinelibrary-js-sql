@@ -32,47 +32,60 @@
     .grid-container{
         display: grid;
         grid-template-areas:
-          'header header headerd'
+          'header header header'
           'main main main'
-          'main main main'
+          'header2 header2 header2'
+          'main2 main2 main2'
           'footer footer footer';
         /* background-color: #2196F3; */
         /* padding: 10px; */
     }
 
     .header{ grid-area: header;}
-    .main{ grid-area: main;}
+    .main { grid-area: main;}
+    .header2{ grid-area: header2;}
+    .main2 { grid-area: main2;}
     .footer{ grid-area: footer;}
 
     .header{
         position: relative;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 100vw;
         margin: 30px 0;
         height: auto;
         font-size:calc(20px + 1.5vw);
-
         color: white;
     }
 
-    .topic-title{
-        display: flex;
-        justify-content: flex-start;
-        width: 40vw;
+    .loggedin-user{
+        font-size:calc(10px + 0.5vw);
+        color:#F2771A;
+        margin: 10px 0px;
+        padding:2px 10px;
+        background-color: white;
+        border-radius: 10px;
+        border-color: transparent;
     }
 
-    .post-count{
-        display: flex;
-        justify-content: flex-end;
-        width: 30vw;
+    .loggedin-user-work{
+        font-size:calc(5px + 0.5vw);
+        margin: 5px 0px;
+        padding:2px 10px;
+        background-color: #F2771A;
+        border-radius: 10px;
+        border-color: transparent;
     }
 
-    .post-count span{
-        margin-left: 10px;
-        color: rgb(218, 105, 0);
+    /* .C{
+        color:#e9e9e9;
+    } */
+
+    .V, .C{
+        color:#e9e9e9;
+        background-color: rgba(128, 128, 128, 0.247);
     }
 
     .main{
@@ -80,7 +93,59 @@
         display: flex;
         justify-content: center;
         width: 100vw;
-        height: 90vh;
+        height: auto;
+    }
+
+    /* Chart */
+    .graph_bar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40vh;
+        width: 75vw;
+        color: white;
+        background-color: rgba(128, 128, 128, 0.247);
+        /* border-style: solid;
+        border-color: red; */
+    }
+
+    .graph-canvas-main{
+        /* background-color: rgba(0, 128, 128, 0.322); */
+        height: auto;
+        width: 95%;
+    }
+
+    #myChart{
+        min-height: 100px;
+        min-width: 500px;
+    }
+
+    .graph-title{
+        height: auto;
+        font-size: calc(20px + 0.5vw);
+    }
+
+    /* POST LIST */
+    .header2{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        margin: 30px 0;
+        height: auto;
+        font-size:calc(20px + 1.5vw);
+        color: white;
+    }
+
+    .main2{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        margin-top: 10px;
+        height: auto;
     }
 
     .tags{
@@ -128,7 +193,7 @@
 
     .tag-title{
         display: flex;
-        width: 55vw;
+        width: 50vw;
         height: 8vh;
         margin-left: 15px;
         justify-content: center;
@@ -157,6 +222,14 @@
         transition: 0.2s ease-in-out;
     }
 
+    .tag-tags{
+        background-color: rgb(128, 0, 187);
+    }
+
+    .tag-view{
+        background-color: rgb(0, 165, 187);
+    }
+
     .tag-link{
         background-color: rgb(0, 128, 43);
     }
@@ -180,6 +253,8 @@
         transition: 0.2s ease-in-out;
     }
 
+    .tag-tags:hover,
+    .tag-view:hover,
     .tag-link:hover,
     .tag-desc:hover,
     .tag-report:hover{
@@ -187,11 +262,13 @@
         background-color:#F2771A;
     }
 
+    .tag-tags:hover .type-name-iconfile,
+    .tag-view:hover .type-name-iconfile,
     .tag-report:hover .type-name-iconfile,
     .tag-desc:hover .type-name-iconfile,
     .tag-link:hover .type-name-iconfile{
         color:  rgb(255, 255, 255);
-        font-size:calc(0px + 1vw);
+        font-size:calc(0px + 0.8vw);
         opacity: 1;
     }
 
@@ -215,4 +292,17 @@
         font-size:calc(15px + 1.5vw);
     }
 
+    /* .info-box-bottom, .click-link-below{
+        display: none;
+    } */
+
+    .tagwrap{
+        border-radius: 20px;
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        color: tomato;
+    }
 }

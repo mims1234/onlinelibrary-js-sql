@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Digital Library - Topics</title>
+    <link rel="stylesheet" href="../CSS/base.css">
+    <link rel="stylesheet" href="../CSS/profile.css">
+    <script src="/JS/icons.js"></script>
+    <!-- ANIMEJS -->
+    <script src="/js/anime.min.js"></script> 
+</head>
+<body>
+    <!-- BASE PARTIALS -->
+    <%- include('template-partials/base.ejs') %>
+    <!-- MAIN-SECTION -->
+    <div class="main-section">
+        <!-- GRID CONTAINER -->
+        <div class="grid-container">
+            <div class="header">
+                <span class="topic-title">Profile</span>
+            </div>
+            <div class="main">
+                <table>
+                    <td>                  
+                        <tr>
+                            <td class="tags">
+                                <div class="grid-container-tags">
+                                    <div class="tag-title">
+                                        <div class="author-span">First Name</div>
+                                        <div class="title-text">Mohammed</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tags">
+                                <div class="grid-container-tags">
+                                    <div class="tag-title">
+                                        <div class="author-span">Last Name</div>
+                                        <div class="title-text">Imran Mohsin</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tags">
+                                <div class="grid-container-tags">
+                                    <div class="tag-title">
+                                        <div class="author-span">Email</div>
+                                        <div class="title-text">mims@gmail.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tags">
+                                <div class="grid-container-tags">
+                                    <div class="tag-title">
+                                        <div class="author-span">Username</div>
+                                        <div class="title-text">MiMs</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </td>
+                    <td>
+                        <tr class="">
+                            <div class="tag-edit tag-icon" onclick="ProfileEdit()">
+                                <div class="type-name-iconfile">Edit</div>
+                                <i class="fas fa-edit iconfile"></i>
+                            </div>
+                        </tr>
+                    </td>
+                </table>
+            </div>
+            <div class="footer">MADE BY <span>K A SAMARASIMHA REDDY</span> AND <span>AAYUSH SINGH</span></div>
+        </div>
+        <div class="bottomspace"></div>
+    </div>
+    <script>
+
+    function BLOCK(span) {document.querySelector(span).style.display = 'flex';}
+    function NONE(span) {document.querySelector(span).style.display = 'none';}
+
+    function CloseLightBox(){
+        document.querySelector('.sign-lightpage').style.display = 'none';
+        CloseAllBoxes()
+    }
+
+    function SignINLightBox(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.signin-box').style.display = 'flex';
+    }
+
+    function SignUPLightBox(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.signup-box').style.display = 'flex';
+    }
+
+    function Add_Post(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.add-post-box').style.display = 'flex';
+    }
+
+    function Info(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.info-box').style.display = 'flex';
+    }
+
+    function Edit(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.edit-post-box').style.display = 'flex';
+    }
+
+    function Tags(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.tag-box').style.display = 'block';
+    }
+
+    function ProfileView(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.profile-box').style.display = 'flex';
+    }
+
+    function ProfileEdit(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.profile-edit-box').style.display = 'flex';
+    }
+
+    function Delete(){
+        FORM = document.querySelector('delete-post-form');
+        console.log("Delete")
+    }
+
+    function OpenLightBox(){
+        document.querySelector('.sign-lightpage').style.display = 'flex';
+    }
+
+    function CloseAllBoxes(){
+        document.querySelector('.signup-box').style.display = 'none';
+        document.querySelector('.signin-box').style.display = 'none';
+        document.querySelector('.info-box').style.display = 'none';
+        document.querySelector('.add-post-box').style.display = 'none';
+        document.querySelector('.edit-post-box').style.display = 'none';
+        document.querySelector('.profile-box').style.display = 'none';
+        document.querySelector('.profile-edit-box').style.display = 'none';
+        document.querySelector('.tag-box').style.display = 'none';
+    }
+
+    function GoHome(){
+        window.location.href = `http://localhost:4030/`
+    }
+
+    function Logout(){
+        console.log("LOGOUT")
+    }
+
+    function Members(){
+        window.location.href = `http://localhost:4030/members`
+    }
+    
+    function Dashboard(){
+        window.location.href = `http://localhost:4030/dashboard`
+    }
+
+    function Profile(){
+        window.location.href = `http://localhost:4030/profile`
+    }
+
+    function Validator(){
+        window.location.href = `http://localhost:4030/validatorpost`
+    }
+
+    </script>
+</body>
+</html>

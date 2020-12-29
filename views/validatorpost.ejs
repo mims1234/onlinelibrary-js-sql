@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Digital Library - Topics</title>
     <link rel="stylesheet" href="../CSS/base.css">
-    <link rel="stylesheet" href="../CSS/topics.css">
+    <link rel="stylesheet" href="../CSS/validatorpost.css">
     <script src="/JS/icons.js"></script>
     <!-- ANIMEJS -->
     <script src="/js/anime.min.js"></script> 
@@ -18,65 +18,11 @@
         <!-- GRID CONTAINER -->
         <div class="grid-container">
             <div class="header">
-                <span class="topic-title">Blockchain</span>
+                <span class="topic-title">New Post To Validate</span>
                 <span class="post-count">Total Posts: <span> 3</span></span>
             </div>
             <div class="main">
                 <table>
-                    <tr>
-                        <td class="tags">
-                            <div class="grid-container-tags">
-                                <div class="tag-type">
-                                    <!-- <i class="fab fa-youtube iconfile"></i> -->
-                                    <i class="fas fa-file-pdf iconfile"></i>
-                                    <div class="type-name">PDF</div>
-                                </div>
-                                <div class="tag-title">
-                                    <div class="title-text">Machine Learning Sklearn</div>
-                                    <div class="author-span">Mohammed Imran Mohsin</div>
-                                </div>
-                                <div class="tag-link tag-icon">
-                                    <div class="type-name-iconfile">Link</div>
-                                    <i class="fas fa-link iconfile"></i>
-                                </div>
-                                <div class="tag-desc tag-icon" onclick="Info()">
-                                    <div class="type-name-iconfile">Info</div>
-                                    <i class="fas fa-info-circle iconfile"></i>
-                                </div>
-                                <div class="tag-report tag-icon">
-                                    <div class="type-name-iconfile">Report</div>
-                                    <i class="fas fa-flag iconfile"></i>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tags">
-                            <div class="grid-container-tags">
-                                <div class="tag-type">
-                                    <!-- <i class="fab fa-youtube iconfile"></i> -->
-                                    <i class="fas fa-file iconfile"></i>
-                                    <div class="type-name">File</div>
-                                </div>
-                                <div class="tag-title">
-                                    <div class="title-text">Machine Learning Sklearn</div>
-                                    <div class="author-span">Mohammed Imran Mohsin</div>
-                                </div>
-                                <div class="tag-link tag-icon">
-                                    <div class="type-name-iconfile">Link</div>
-                                    <i class="fas fa-link iconfile"></i>
-                                </div>
-                                <div class="tag-desc tag-icon" onclick="Info()">
-                                    <div class="type-name-iconfile">Info</div>
-                                    <i class="fas fa-info-circle iconfile"></i>
-                                </div>
-                                <div class="tag-report tag-icon">
-                                    <div class="type-name-iconfile">Report</div>
-                                    <i class="fas fa-flag iconfile"></i>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
                     <tr>
                         <td class="tags">
                             <div class="grid-container-tags">
@@ -89,17 +35,60 @@
                                     <div class="title-text">Machine Learning Sklearn</div>
                                     <div class="author-span">Mohammed Imran Mohsin</div>
                                 </div>
-                                <div class="tag-link tag-icon">
-                                    <div class="type-name-iconfile">Link</div>
-                                    <i class="fas fa-link iconfile"></i>
+                                <div class="tag-tags tag-icon" onclick="Tags()">
+                                    <div class="type-name-iconfile">Tags</div>
+                                    <i class="fas fa-tags iconfile"></i>
                                 </div>
                                 <div class="tag-desc tag-icon" onclick="Info()">
                                     <div class="type-name-iconfile">Info</div>
                                     <i class="fas fa-info-circle iconfile"></i>
                                 </div>
-                                <div class="tag-report tag-icon">
-                                    <div class="type-name-iconfile">Report</div>
-                                    <i class="fas fa-flag iconfile"></i>
+                                <div class="tag-valid tag-icon">
+                                    <div class="type-name-iconfile">Valid</div>
+                                    <i class="fas fa-check iconfile"></i>
+                                </div>
+                                <div class="tag-reject tag-icon">
+                                    <div class="type-name-iconfile">Reject</div>
+                                    <i class="fas fa-times iconfile"></i>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="header2">
+                <span class="topic-title">Reported Post</span>
+                <span class="post-count">Total Posts: <span> 3</span></span>
+            </div>
+            <div class="main2">
+                <table>
+                    <tr>
+                        <td class="tags">
+                            <div class="grid-container-tags">
+                                <div class="tag-type">
+                                    <i class="fab fa-youtube iconfile"></i>
+                                    <!-- <i class="fas fa-file-pdf iconfile"></i> -->
+                                    <div class="type-name">Youtube</div>
+                                </div>
+                                <div class="tag-title">
+                                    <div class="title-text">Machine Learning Sklearn</div>
+                                    <div class="author-span">Mohammed Imran Mohsin</div>
+                                </div>
+                                <div class="tag-tags tag-icon" onclick="Tags()">
+                                    <div class="type-name-iconfile">Tags</div>
+                                    <i class="fas fa-tags iconfile"></i>
+                                </div>
+                                <div class="tag-desc tag-icon" onclick="Info()">
+                                    <div class="type-name-iconfile">Info</div>
+                                    <i class="fas fa-info-circle iconfile"></i>
+                                </div>
+                                <div class="tag-report-cancel tag-icon">
+                                    <div class="type-name-iconfile">Cancel</div>
+                                    <i class="fas fa-times-circle iconfile"></i>
+                                </div>
+                                <div class="tag-delete tag-icon">
+                                    <div class="type-name-iconfile">Delete</div>
+                                    <i class="fas fa-trash-alt iconfile"></i>
                                 </div>
                             </div>
                         </td>
@@ -150,6 +139,18 @@
         document.querySelector('.edit-post-box').style.display = 'flex';
     }
 
+    function Tags(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.tag-box').style.display = 'block';
+    }
+
+    function ProfileView(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.profile-box').style.display = 'flex';
+    }
+
     function Delete(){
         FORM = document.querySelector('delete-post-form');
         console.log("Delete")
@@ -165,9 +166,8 @@
         document.querySelector('.info-box').style.display = 'none';
         document.querySelector('.add-post-box').style.display = 'none';
         document.querySelector('.edit-post-box').style.display = 'none';
-        document.querySelector('.profile-box').style.display = 'none';
-        document.querySelector('.profile-edit-box').style.display = 'none';
         document.querySelector('.tag-box').style.display = 'none';
+        document.querySelector('.profile-box').style.display = 'none';
     }
 
     function GoHome(){
@@ -176,10 +176,6 @@
 
     function Logout(){
         console.log("LOGOUT")
-    }
-
-    function Topic(){
-        window.location.href = `http://localhost:4030/topic`
     }
 
     function Members(){

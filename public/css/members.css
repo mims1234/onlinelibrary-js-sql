@@ -104,7 +104,7 @@
 
     .tag-type{
         display: flex;
-        width: 5vw;
+        width: 10vw;
         height: 8vh;
         align-items: center;
         justify-content: center;
@@ -128,7 +128,7 @@
 
     .tag-title{
         display: flex;
-        width: 55vw;
+        width: 50vw;
         height: 8vh;
         margin-left: 15px;
         justify-content: center;
@@ -157,16 +157,18 @@
         transition: 0.2s ease-in-out;
     }
 
-    .tag-link{
+    .tag-validator{
+        width: 10vw;
+        background-color: rgb(128, 0, 0);
+    }
+
+    .tag-contributer{
+        width: 10vw;
         background-color: rgb(0, 128, 43);
     }
 
     .tag-desc{
         background-color: rgb(0, 2, 128);
-    }
-
-    .tag-report{
-        background-color: rgb(128, 0, 0);
     }
 
     .iconfilelink{
@@ -180,16 +182,16 @@
         transition: 0.2s ease-in-out;
     }
 
-    .tag-link:hover,
+    .tag-contributer:hover,
     .tag-desc:hover,
-    .tag-report:hover{
+    .tag-validator:hover{
         color:  rgb(255, 255, 255);
         background-color:#F2771A;
     }
 
-    .tag-report:hover .type-name-iconfile,
+    .tag-validator:hover .type-name-iconfile,
     .tag-desc:hover .type-name-iconfile,
-    .tag-link:hover .type-name-iconfile{
+    .tag-contributer:hover .type-name-iconfile{
         color:  rgb(255, 255, 255);
         font-size:calc(0px + 1vw);
         opacity: 1;
@@ -205,10 +207,22 @@
         transition: 0.3s ease-in-out;
     }
 
+    .author-span span{
+        color:white;
+        margin:0px 10px;
+        transition: 0.1s ease-in-out;
+    }
+
     .tags:hover .author-span{
         font-size:calc(18px + 0.2vw); ;
         margin-left: 1vw;
-        color:#F2771A;
+        color:white;
+    }
+
+    .tags:hover .author-span span{
+        font-size:calc(18px + 0.2vw); ;
+        margin-left: 1vw;
+        color:#f21a1a;
     }
 
     .tags:hover .tag-title{
