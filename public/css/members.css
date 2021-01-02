@@ -167,6 +167,12 @@
         background-color: rgb(0, 128, 43);
     }
 
+    .tag-admin{
+        width: 10vw;
+        background-color: #F2771A;
+        cursor:default;
+    }
+
     .tag-desc{
         background-color: rgb(0, 2, 128);
     }
@@ -182,6 +188,7 @@
         transition: 0.2s ease-in-out;
     }
 
+    .tag-admin:hover,
     .tag-contributer:hover,
     .tag-desc:hover,
     .tag-validator:hover{
@@ -189,6 +196,7 @@
         background-color:#F2771A;
     }
 
+    .tag-admin:hover .type-name-iconfile,
     .tag-validator:hover .type-name-iconfile,
     .tag-desc:hover .type-name-iconfile,
     .tag-contributer:hover .type-name-iconfile{

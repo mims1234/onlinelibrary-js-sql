@@ -67,11 +67,28 @@
     }
 
     .tags{
+        display: flex;
         color: white;
         background-color:#F2771A;
+        flex-direction: column;
         height: 100px;
         width: 25vw;
         font-size: 20px;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        transition: 0.1s ease-in-out;
+    }
+
+    .tags-nopost{
+        display: flex;
+        color: white;
+        background-color:#ff7f1db6;
+        flex-direction: column;
+        height: 300px;
+        width: 75vw;
+        font-size: 20px;
+        align-items: center;
         text-align: center;
         justify-content: center;
         transition: 0.1s ease-in-out;
@@ -99,4 +116,5 @@
         padding: 50px 0px;
         cursor: pointer;
     }
+
 }

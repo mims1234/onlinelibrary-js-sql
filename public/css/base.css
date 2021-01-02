@@ -28,7 +28,7 @@
         box-sizing: border-box;
     }
 
-    .desktop-view, .sign-lightpage{
+    .desktop-view, .sign-lightpage, .sign-lightpageprofile{
         display: none;
     }
 
@@ -97,8 +97,7 @@
         align-items: center;
         position: absolute;
         height: 100vh;
-        width: 100vw;
-        z-index: 1000;  
+        width: 100vw; 
         background-color: rgba(0, 0, 0, 0.726);  
         z-index: 996;    
     }
@@ -321,13 +320,14 @@
         height: auto;
         width: 10vw;
         color: white;
-        font-size: calc(30px + 1vw);
+        font-size: calc(10px + 0.5vw + 0.5vh);
         background-color: rgb(255, 35, 35);
         padding: 20px 0px;
     }
 
     .info-type-text{
-        font-size: calc(20px + 1vw);
+        margin-top: 5px;
+        font-size: calc(10px + 1vw);
     }
 
     .info-header{
@@ -355,15 +355,21 @@
         padding: 10px 0px;
     }
 
+    .info-author::before{
+        content: "Author :";
+        margin-right: 10px;
+        font-style: italic;
+    }
+
     .info-author{
         display: flex;
         justify-content: flex-end;
         /* align-items: center; */
         height: auto;
-        color:#ffffff;
+        color:black;
         padding-right: 10px;
         font-size: calc(10px + 1vw);
-        background-color: rgb(0, 0, 0);
+        background-color:white;
     }
 
     .info-desc{
@@ -383,7 +389,7 @@
         color: white;
     }
 
-    .info-link, .info-report{
+    .info-link-dashboard, .info-link, .info-report{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -396,12 +402,17 @@
         width: 70vw;
     }
 
+    .info-link-dashboard{
+        background-color: rgb(0, 128, 43);
+        width: 80vw;
+    }
+
     .info-report{
         background-color:rgb(128, 0, 0);
         width: 10vw;
     }
 
-    .info-link:hover, .info-report:hover{
+    .info-link-dashboard:hover, .info-link:hover, .info-report:hover{
         color:  rgb(255, 255, 255);
         background-color:#F2771A;
     }
@@ -716,6 +727,7 @@
     .tag-box{
         position: fixed;
         display: none;
+        /* flex-direction: row; */
         height:auto;
         width: 500px;
         font-size:24px;
@@ -723,6 +735,10 @@
         border: transparent;
         z-index: 999;
         overflow:auto;
+    }
+
+    #tag-box{
+        margin: 3px;
     }
 
     .input-tag{
@@ -786,18 +802,87 @@
 
     @keyframes footeranim {
         0%{
-            color:#000000;
+            color:#a0a0a0;
         }
         20%{
             color:white;
         }
         100%{
-            color:#000000;
+            color:#a0a0a0;
         }
     }
 
     .bottomspace{
         height: 50px;
         width: 100vw;
+    }
+
+    .disable-input-class{
+        display: none;
+    }
+
+
+    /* Alert Annoncement */
+    .alert-message{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+        animation: alertanim 1s ease-in;
+        z-index: 1100;
+        top: 10px;
+    }
+
+    .alert-message-close{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+        animation: alertanimclose 1s ease-in;
+        z-index: 1100;
+        top: -40px;
+    }
+
+    .alert-text{
+        display: flex;
+        align-items: center;
+        color: white;
+        background-color: rgb(77, 0, 177);
+        border-radius: 10px;
+        font-size: 12px;
+        padding:5px 10px;
+    }
+
+    .closeAlert{
+        all: unset;
+        color: red;
+        font-size:calc(7px + 0.5vw + 0.5vh);
+        margin-left:10px;
+        cursor: pointer;
+        z-index: 1101;
+        transition: 0.3s ease-in-out;
+    }
+    .closeAlert:hover{
+        color: rgba(255, 0, 0, 0.486);
+    }
+
+    @keyframes alertanim {
+        0%{
+            top: -40px;
+        }
+        100%{
+            top: 10px;
+        }
+    }
+
+    @keyframes alertanimclose {
+        0%{
+            top: 10px;
+        }
+        100%{
+            top: -40px;
+        }
     }
 }

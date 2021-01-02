@@ -83,7 +83,7 @@
         color:#e9e9e9;
     } */
 
-    .V, .C{
+    .V, .C .A{
         color:#e9e9e9;
         background-color: rgba(128, 128, 128, 0.247);
     }
@@ -162,6 +162,20 @@
         transition: 0.3s ease-in-out;
     }
 
+    .tags-nopost{
+        display: flex;
+        color: white;
+        background-color:#ff7f1db6;
+        flex-direction: column;
+        height: 300px;
+        width: 75vw;
+        font-size: 20px;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        transition: 0.1s ease-in-out;
+    }
+
     .grid-container-tags{
         display: flex;
         flex-direction: row;
@@ -193,7 +207,7 @@
 
     .tag-title{
         display: flex;
-        width: 50vw;
+        width: 45vw;
         height: 8vh;
         margin-left: 15px;
         justify-content: center;
@@ -222,12 +236,38 @@
         transition: 0.2s ease-in-out;
     }
 
+    .tag-rejected{
+        background-color: rgb(128, 0, 0);
+        cursor: default;
+    }
+
+    .tag-flagged{
+        background-color: rgb(253, 0, 0);
+        cursor: default;
+    }
+
+    .tag-unblock{
+        background-color: rgb(0, 128, 43);
+        cursor: default;
+    }
+
+    .tag-block{
+        background-color:  rgb(128, 0, 0);
+        cursor: default;
+    }
+
+    .tag-waiting{
+        background-color:rgb(0, 90, 207);
+        cursor: default;
+    }
+
     .tag-tags{
         background-color: rgb(128, 0, 187);
     }
 
     .tag-view{
         background-color: rgb(0, 165, 187);
+        cursor: default;
     }
 
     .tag-link{
@@ -253,6 +293,11 @@
         transition: 0.2s ease-in-out;
     }
 
+    .tag-rejected:hover,
+    .tag-flagged:hover,
+    .tag-block:hover,
+    .tag-unblock:hover,
+    .tag-waiting:hover,
     .tag-tags:hover,
     .tag-view:hover,
     .tag-link:hover,
@@ -262,6 +307,11 @@
         background-color:#F2771A;
     }
 
+    .tag-rejected:hover .type-name-iconfile,
+    .tag-flagged:hover .type-name-iconfile,
+    .tag-unblock:hover .type-name-iconfile,
+    .tag-block:hover .type-name-iconfile,
+    .tag-waiting:hover .type-name-iconfile,
     .tag-tags:hover .type-name-iconfile,
     .tag-view:hover .type-name-iconfile,
     .tag-report:hover .type-name-iconfile,

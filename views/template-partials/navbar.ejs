@@ -1,0 +1,134 @@
+<!-- NAV BAR -->
+<div class="navbar">
+    <div class="logo">
+        <h1 id="website-title">Online Digital Library</h1>
+    </div>
+    <div class="tabs">
+        <%if(loggedin==="true" && roleid==="1"){%>
+        <div class="nav-item">
+            <div class="nav-post" onclick="Add_Post()">
+                <i class="fas fa-plus iconplus"></i> AddPost
+            </div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-home" onclick="GoHome()">
+                Home
+            </div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-dashboard" onclick="Dashboard()">
+                Dashboard
+            </div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-profile" onclick="Profile()">
+                Profile
+            </div>
+        </div>
+        <form action="signout" method="POST" class="nav-item" id="logout-form" >
+            <div class="nav-logout" onClick="javascript:this.parentNode.submit();">
+                Logout
+            </div>
+        </form>
+        <%} else if(loggedin==="true" && roleid==="2"){%>
+            <div class="nav-item">
+                <div class="nav-post" onclick="Add_Post()">
+                    <i class="fas fa-plus iconplus"></i> AddPost
+                </div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-home" onclick="GoHome()">
+                    Home
+                </div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-dashboard" onclick="Dashboard()">
+                    Dashboard
+                </div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-validator" onclick="Validator()">
+                    Validator
+                </div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-profile" onclick="Profile()">
+                    Profile
+                </div>
+            </div>
+            <form action="signout" method="POST" class="nav-item" id="logout-form" >
+                <div class="nav-logout" onClick="javascript:this.parentNode.submit();">
+                    Logout
+                </div>
+            </form>
+            <%} else if(loggedin==="true" && roleid==="3"){%>
+                <div class="nav-item">
+                    <div class="nav-post" onclick="Add_Post()">
+                        <i class="fas fa-plus iconplus"></i> AddPost
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-home" onclick="GoHome()">
+                        Home
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-dashboard" onclick="Dashboard()">
+                        Dashboard
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-validator" onclick="Validator()">
+                        Validator
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-members" onclick="Members()">
+                        Members
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-profile" onclick="Profile()">
+                        Profile
+                    </div>
+                </div>
+                <form action="signout" method="POST" class="nav-item" id="logout-form" >
+                    <div class="nav-logout" onClick="javascript:this.parentNode.submit();">
+                        Logout
+                    </div>
+                </form>
+            <%} else {%>
+                <div class="nav-item">
+                    <div class="nav-home" onclick="GoHome()">
+                        Home
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-sign-in" onclick="SignINLightBox()">
+                        Sign In
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-sign-up" onclick="SignUPLightBox()">
+                        Sign Up
+                    </div>
+                </div>
+            <%}%>
+    </div>
+    <%if(alertMsg!="null"){%>
+        <div id="alert-message" class="alert-message">
+            <div class="alert-text">
+                <%=alertMsg%>
+                <div id="closeAlert" class="closeAlert" onclick="CloseAlertMessageFunc()">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <script>
+                function CloseAlertMessageFunc(){
+                    document.getElementById("closeAlert").classList.remove("alert-message")
+                    document.getElementById("alert-message").classList.add("alert-message-close")
+                }
+            </script>
+        </div>
+    <%}%>
+</div>

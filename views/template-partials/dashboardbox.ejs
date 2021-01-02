@@ -1,0 +1,132 @@
+<!-- SIGN IN BOX -->
+<div class="info-cancel" onclick="CloseLightBox()">
+    <i class="fas fa-times icontimes"></i>
+</div>
+
+ <!-- INFO BOX -->
+ <div class="info-box">
+    <div class="info-box-top">
+        <div class="info-type">
+            <i class="fab fa-youtube icontype" id="info-icon"></i>
+            <div class="info-type-text" id="info-type-text">
+                Youtube
+            </div>
+        </div>
+        <div class="info-header" id="info-header-text">
+        </div>
+    </div>
+    <div class="info-author">
+        <i id="info-author-text">Mohammed Imran Mohsin</i>
+    </div>
+    <div class="info-desc">
+        <i id="info-desc-text"></i>
+        <div class="click-link-below">Click Link Below</div>
+    </div>
+    <div class="info-box-bottom">
+        <form action="redirect" method="POST" target="_blank" class="info-link-dashboard" onClick="javascript:this.submit()">
+            <div class="link-text-iconbutton">Link</div>
+            <i class="fas fa-link iconbutton"></i>
+            <input class="disable-input-class" type="text" name="Link" id="info-link-text" >
+            <input class="disable-input-class" type="text" name="DocID" id="info-docid-text">
+        </form>    
+    </div>
+</div>
+
+<!-- ADD POST BOX -->
+<div class="add-post-box">
+    <p class="add-post-header">Add Post</p>
+    <form class="form-class" action="addpost" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="title" class="input-bar" required value="Google Website">
+        <label for="type">Type:</label>
+            <div class="add-post-options">
+                <div class="add-post-option1">
+                    <label for="youtube">
+                        <input type="radio" id="youtube" name="type" value="YOUTUBE" required checked>Youtube
+                    </label>
+                </div>
+                <div class="add-post-option2">
+                    <label for="pdf">
+                        <input type="radio" id="pdf" name="type" value="PDF">
+                        PDF
+                    </label>
+                </div>
+                <div class="add-post-option3">
+                    <label for="article">
+                        <input type="radio" id="article" name="type" value="ARTICLE" required>
+                        Article
+                    </label>
+                </div>
+                <div class="add-post-option4">
+                    <label for="image">
+                        <input type="radio" id="image" name="type" value="IMAGE">
+                        Image
+                    </label>
+                </div>
+            </div>
+        <label for="link">Link:</label>
+        <input type="url" name="link" class="input-bar" required value="www.google.com">
+        <label for="desc">Description:</label>
+        <textarea type="text" name="desc" id="textarea-desc" class="textarea-desc" required>Description of www.google.com</textarea>
+        <label for="tags">Tags:</label>
+        <textarea type="text" name="tags" id="textarea-tags-add" class="textarea-tags" required placeholder="Enter max 5 tags use `,` to seperate each tag" >Documents, Websites
+        </textarea>
+        <div class="form-class-buttons">
+            <button type="submit" class="addpost">Post</button>
+            <button type="button" class="cancel" onclick="CloseLightBox()">Close</button>
+        </div>
+    </form>
+</div>
+
+<!-- EDIT POST BOX -->
+<div class="edit-post-box">
+    <p class="edit-post-header">Edit Post</p>
+    <form class="form-class" action="editpost" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="title" class="input-bar" required id="editpost-header-text">
+        <label for="type" id="editpost-type-text">Type:</label>
+            <div class="edit-post-options">
+                <div class="edit-post-option1">
+                    <label for="youtube">
+                        <input type="radio" id="youtube" name="type" value="YOUTUBE" required>Youtube
+                    </label>
+                </div>
+                <div class="edit-post-option2">
+                    <label for="pdf">
+                        <input type="radio" id="pdf" name="type" value="PDF" required>
+                        PDF
+                    </label>
+                </div>
+                <div class="edit-post-option3">
+                    <label for="article">
+                        <input type="radio" id="article" name="type" value="ARTICLE" required>
+                        Article
+                    </label>
+                </div>
+                <div class="edit-post-option4">
+                    <label for="image">
+                        <input type="radio" id="image" name="type" value="IMAGE">
+                        Image
+                    </label>
+                </div>
+            </div>
+        <label for="link">Link:</label>
+        <input type="url" name="link" class="input-bar" value="https://covid19-tracker-js.mims12341.repl.co/" required id="editpost-link-text">
+        <label for="desc">Description:</label>
+        <textarea type="text" name="desc" class="textarea-desc" required id="editpost-desc-text"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</textarea>
+        <label for="tags">Tags:</label>
+        <textarea type="text" name="tags" id="editpost-tags-text" class="textarea-tags" required placeholder="Enter max 5 tags use `,` to seperate each tag"></textarea>
+        <input type="text" name="docID" id="editpost-id-text" class="disable-input-class">
+        <div class="form-class-buttons">
+            <button type="submit" class="editpost">Edit Post</button>
+            <button type="button" class="cancel" onclick="CloseLightBox()">Close</button>
+        </div>
+    </form>
+</div>
+
+<!-- TAG BOX -->
+<div class="tag-box">
+    <p class="tag-header">Tags</p>
+    <div id="tag-box"></div>
+    <button type="button" class="cancel" onclick="CloseLightBox()">Close</button>
+</div>

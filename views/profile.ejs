@@ -11,70 +11,80 @@
     <script src="/js/anime.min.js"></script> 
 </head>
 <body>
-    <!-- BASE PARTIALS -->
+    <!-- MOBILE VIEW -->
     <%- include('template-partials/base.ejs') %>
+
+    <!-- PROFILE-EDIT BOX -->
+    <div class="sign-lightpage">
+        <%- include('template-partials/profilebox.ejs') %>
+    </div>
+
     <!-- MAIN-SECTION -->
-    <div class="main-section">
-        <!-- GRID CONTAINER -->
-        <div class="grid-container">
-            <div class="header">
-                <span class="topic-title">Profile</span>
+    <div class="desktop-view">
+        <!-- NAV BAR -->
+        <%- include('template-partials/navbar.ejs') %>
+        <div class="main-section">
+            <!-- GRID CONTAINER -->
+            <div class="grid-container">
+                <div class="header">
+                    <span class="topic-title">Profile</span>
+                </div>
+                <div class="main">
+                    <table>
+                        <td>                  
+                            <tr>
+                                <td class="tags">
+                                    <div class="grid-container-tags">
+                                        <div class="tag-title">
+                                            <div class="author-span">First Name</div>
+                                            <div class="title-text"><%=profile[0].Ufname%></div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tags">
+                                    <div class="grid-container-tags">
+                                        <div class="tag-title">
+                                            <div class="author-span">Last Name</div>
+                                            <div class="title-text"><%=profile[0].Ulname%></div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tags">
+                                    <div class="grid-container-tags">
+                                        <div class="tag-title">
+                                            <div class="author-span">Email</div>
+                                            <div class="title-text"><%=profile[0].Uemail%></div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tags">
+                                    <div class="grid-container-tags">
+                                        <div class="tag-title">
+                                            <div class="author-span">Username</div>
+                                            <div class="title-text"><%=profile[0].UCusername%></div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </td>
+                        <td>
+                            <tr class="">
+                                <div class="tag-edit tag-icon" onclick="ProfileEdit()">
+                                    <div class="type-name-iconfile">Edit</div>
+                                    <i class="fas fa-edit iconfile"></i>
+                                </div>
+                            </tr>
+                        </td>
+                    </table>
+                </div>
+                <div class="footer">MADE BY <span>K A SAMARASIMHA REDDY</span> AND <span>AAYUSH SINGH</span></div>
             </div>
-            <div class="main">
-                <table>
-                    <td>                  
-                        <tr>
-                            <td class="tags">
-                                <div class="grid-container-tags">
-                                    <div class="tag-title">
-                                        <div class="author-span">First Name</div>
-                                        <div class="title-text">Mohammed</div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tags">
-                                <div class="grid-container-tags">
-                                    <div class="tag-title">
-                                        <div class="author-span">Last Name</div>
-                                        <div class="title-text">Imran Mohsin</div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tags">
-                                <div class="grid-container-tags">
-                                    <div class="tag-title">
-                                        <div class="author-span">Email</div>
-                                        <div class="title-text">mims@gmail.com</div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tags">
-                                <div class="grid-container-tags">
-                                    <div class="tag-title">
-                                        <div class="author-span">Username</div>
-                                        <div class="title-text">MiMs</div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </td>
-                    <td>
-                        <tr class="">
-                            <div class="tag-edit tag-icon" onclick="ProfileEdit()">
-                                <div class="type-name-iconfile">Edit</div>
-                                <i class="fas fa-edit iconfile"></i>
-                            </div>
-                        </tr>
-                    </td>
-                </table>
-            </div>
-            <div class="footer">MADE BY <span>K A SAMARASIMHA REDDY</span> AND <span>AAYUSH SINGH</span></div>
         </div>
         <div class="bottomspace"></div>
     </div>
@@ -146,14 +156,8 @@
     }
 
     function CloseAllBoxes(){
-        document.querySelector('.signup-box').style.display = 'none';
-        document.querySelector('.signin-box').style.display = 'none';
-        document.querySelector('.info-box').style.display = 'none';
         document.querySelector('.add-post-box').style.display = 'none';
-        document.querySelector('.edit-post-box').style.display = 'none';
-        document.querySelector('.profile-box').style.display = 'none';
         document.querySelector('.profile-edit-box').style.display = 'none';
-        document.querySelector('.tag-box').style.display = 'none';
     }
 
     function GoHome(){

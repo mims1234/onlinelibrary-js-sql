@@ -1,0 +1,109 @@
+   <!-- SIGN IN BOX -->
+<div class="info-cancel" onclick="CloseLightBox()">
+    <i class="fas fa-times icontimes"></i>
+</div>
+
+<!-- PROFILE BOX -->
+<div class="profile-box">
+    <p class="profile-header">Profile</p>
+    <div class="main-profile">
+        <table>
+            <tr>
+                <td class="tags">
+                    <div class="grid-container-tags">
+                        <div class="tag-title">
+                            <div class="author-span">First Name</div>
+                            <div class="title-text" id="profile-fname-text"></div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="tags">
+                    <div class="grid-container-tags">
+                        <div class="tag-title">
+                            <div class="author-span">Last Name</div>
+                            <div class="title-text" id="profile-lname-text"></div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="tags">
+                    <div class="grid-container-tags">
+                        <div class="tag-title">
+                            <div class="author-span">Email</div>
+                            <div class="title-text" id="profile-email-text"></div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="tags">
+                    <div class="grid-container-tags">
+                        <div class="tag-title">
+                            <div class="author-span">Username</div>
+                            <div class="title-text" id="profile-username-text" value="userstuff"></div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" class="cancel" onclick="CloseLightBox()">Close</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- ADD POST BOX -->
+<div class="add-post-box">
+    <p class="add-post-header">Add Post</p>
+    <form class="form-class" action="addpost" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="title" class="input-bar" required value="Google Website">
+        <label for="type">Type:</label>
+            <div class="add-post-options">
+                <div class="add-post-option1">
+                    <label for="youtube">
+                        <input type="radio" id="youtube" name="type" value="YOUTUBE" required checked>Youtube
+                    </label>
+                </div>
+                <div class="add-post-option2">
+                    <label for="pdf">
+                        <input type="radio" id="pdf" name="type" value="PDF">
+                        PDF
+                    </label>
+                </div>
+                <div class="add-post-option3">
+                    <label for="article">
+                        <input type="radio" id="article" name="type" value="ARTICLE" required>
+                        Article
+                    </label>
+                </div>
+                <div class="add-post-option4">
+                    <label for="image">
+                        <input type="radio" id="image" name="type" value="IMAGE">
+                        Image
+                    </label>
+                </div>
+            </div>
+        <label for="link">Link:</label>
+        <input type="url" name="link" class="input-bar" required value="www.google.com">
+        <label for="desc">Description:</label>
+        <textarea type="text" name="desc" id="textarea-desc" class="textarea-desc" required>Description of www.google.com</textarea>
+        <label for="tags">Tags:</label>
+        <textarea type="text" name="tags" id="textarea-tags-add" class="textarea-tags" required placeholder="Enter max 5 tags use `,` to seperate each tag" >Documents, Websites
+        </textarea>
+        <input type="text" name="signAddress" id="addpost-address" class="disable-input-class">
+        <script>
+            ADDPOST_VALUE=document.getElementById("addpost-address")
+            ADDPOST_VALUE.value=window.location.pathname
+        </script>
+        <div class="form-class-buttons">
+            <button type="submit" class="addpost">Post</button>
+            <button type="button" class="cancel" onclick="CloseLightBox()">Close</button>
+        </div>
+    </form>
+</div>

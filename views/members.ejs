@@ -11,9 +11,18 @@
     <script src="/js/anime.min.js"></script> 
 </head>
 <body>
-    <!-- BASE PARTIALS -->
+    <!-- MOBILE VIEW -->
     <%- include('template-partials/base.ejs') %>
+
+    <!-- PROFILE-EDIT BOX -->
+    <div class="sign-lightpage">
+        <%- include('template-partials/membersbox.ejs') %>
+    </div>
+
     <!-- MAIN-SECTION -->
+    <div class="desktop-view">
+        <!-- NAV BAR -->
+        <%- include('template-partials/navbar.ejs') %>
     <div class="main-section">
         <!-- GRID CONTAINER -->
         <div class="grid-container">
@@ -22,60 +31,66 @@
             </div>
             <div class="main">
                 <table>
-                    <tr>
-                        <td class="tags">
-                            <div class="grid-container-tags">
-                                <div class="tag-type">
-                                    <!-- <i class="fab fa-youtube iconfile"></i> -->
-                                    <i class="fas fa-user iconfile"></i>
-                                    <div class="type-name">USER</div>
-                                </div>
-                                <div class="tag-title">
-                                    <div class="title-text">Mohammed Imran Mohsin</div>
-                                    <div class="author-span">Post: <span>300</span> Views: <span>123</span></div>
-                                </div>
-                                <div class="tag-validator tag-icon">
-                                    <div class="type-name-iconfile">Make Validator</div>
-                                    <i class="fas fa-user-cog iconfile"></i>
-                                </div>
-                                <!-- <div class="tag-contributer tag-icon">
-                                    <div class="type-name-iconfile">Make Contributor</div>
-                                    <i class="fas fa-user iconfile"></i>
-                                </div> -->
-                                <div class="tag-desc tag-icon" onclick="ProfileView()">
-                                    <div class="type-name-iconfile">Profile</div>
-                                    <i class="fas fa-id-card iconfile"></i>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tags">
-                            <div class="grid-container-tags">
-                                <div class="tag-type">
-                                    <!-- <i class="fab fa-youtube iconfile"></i> -->
-                                    <i class="fas fa-user-cog iconfile"></i>
-                                    <div class="type-name">VALIDATOR</div>
-                                </div>
-                                <div class="tag-title">
-                                    <div class="title-text">Samaraha Simha Reddy</div>
-                                    <div class="author-span">Post: <span>125</span> Views: <span>231</span></div>
-                                </div>
-                                <!-- <div class="tag-validator tag-icon">
-                                    <div class="type-name-iconfile">Make Validator</div>
-                                    <i class="fas fa-user-cog iconfile"></i>
-                                </div> -->
-                                <div class="tag-contributer tag-icon">
-                                    <div class="type-name-iconfile">Make Contributor</div>
-                                    <i class="fas fa-user iconfile"></i>
-                                </div>
-                                <div class="tag-desc tag-icon" onclick="ProfileView()">
-                                    <div class="type-name-iconfile">Profile</div>
-                                    <i class="fas fa-id-card iconfile"></i>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                    <% if(members.length>0){ %>
+                        <% members.forEach((elements,index)=>{ %>
+                            <tr>
+                                <td class="tags">
+                                    <div class="grid-container-tags">
+                                        <form action="updateRoleMember">
+                                            <div class="tag-type">
+                                                <% if(elements.UCrole===1){ %> 
+                                                    <i class="fas fa-user iconfile"></i>
+                                                    <div class="type-name">USER</div>
+                                                <%}else if(elements.UCrole===2){%> 
+                                                    <i class="fas fa-user-cog iconfile"></i>
+                                                    <div class="type-name">VALIDATOR</div>
+                                                <%}else{%> 
+                                                    <i class="fas fa-user-shield iconfile"></i>
+                                                    <div class="type-name">ADMIN</div>
+                                                <%}%>
+                                            </div>
+                                        </form>
+                                        <div class="tag-title">
+                                            <div class="title-text"><%=elements.Ufname%> <%=elements.Ulname%> </div>
+                                            <div class="author-span">Post: <span><%=elements.counts%></span> Views: <span><%=elements.views%></span></div>
+                                        </div>
+                                        <% if(elements.UCrole===1){ %> 
+                                            <form action="updateRoleMember" method="POST" >
+                                                <div class="tag-validator tag-icon" onClick="javascript:this.parentNode.submit();">
+                                                    <div class="type-name-iconfile">Make Validator</div>
+                                                    <i class="fas fa-user-cog iconfile"></i>
+                                                    <input class="disable-input-class" type="text" name="memberID" value="<%=elements.Uid%>">
+                                                    <input class="disable-input-class" type="text" name="memberRole" value="1">
+                                                </div>
+                                            </form>
+                                        <%}else if(elements.UCrole===2){%> 
+                                            <form action="updateRoleMember" method="POST">
+                                                <div class="tag-contributer tag-icon" onClick="javascript:this.parentNode.submit();">
+                                                    <div class="type-name-iconfile">Make Contributor</div>
+                                                    <i class="fas fa-user iconfile"></i>
+                                                    <input class="disable-input-class" type="text" name="memberID" value="<%=elements.Uid%>">
+                                                    <input class="disable-input-class" type="text" name="memberRole" value="2"> 
+                                                </div>
+                                            </form>
+                                        <%}else{%> 
+                                            <form action="updateRoleMember" method="POST">
+                                                <div class="tag-admin tag-icon">
+                                                    <div class="type-name-iconfile">ADMIN</div>
+                                                    <i class="fas fa-user-shield iconfile"></i>
+                                                    <input class="disable-input-class" type="text" name="memberID" value="<%=elements.Uid%>">
+                                                    <input class="disable-input-class" type="text" name="memberRole" value="2">
+                                                </div>
+                                            </form>
+                                        <%}%>
+                                        <div class="tag-desc tag-icon" onClick="ProfileView(<%=index%>)">
+                                            <div class="type-name-iconfile">Profile</div>
+                                            <i class="fas fa-id-card iconfile"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>     
+                        <%}) %>     
+                    <% } %>  
                 </table>
             </div>
             <div class="footer">MADE BY <span>K A SAMARASIMHA REDDY</span> AND <span>AAYUSH SINGH</span></div>
@@ -83,6 +98,10 @@
         <div class="bottomspace"></div>
     </div>
     <script>
+
+    function ChangeRole(){
+        
+    }
 
     function BLOCK(span) {document.querySelector(span).style.display = 'flex';}
     function NONE(span) {document.querySelector(span).style.display = 'none';}
@@ -128,9 +147,15 @@
         document.querySelector('.tag-box').style.display = 'flex';
     }
 
-    function ProfileView(){
+    function ProfileView(id){
         OpenLightBox()
         CloseAllBoxes()
+        profileList=<%-newMembersList%>;
+        console.log(profileList)
+        document.getElementById("profile-fname-text").innerHTML=profileList[id].Ufname
+        document.getElementById("profile-lname-text").innerHTML=profileList[id].Ulname
+        document.getElementById("profile-email-text").innerHTML=profileList[id].Uemail
+        document.getElementById("profile-username-text").innerHTML=profileList[id].UCusername
         document.querySelector('.profile-box').style.display = 'flex';
     }
 
@@ -144,14 +169,9 @@
     }
 
     function CloseAllBoxes(){
-        document.querySelector('.signup-box').style.display = 'none';
-        document.querySelector('.signin-box').style.display = 'none';
-        document.querySelector('.info-box').style.display = 'none';
         document.querySelector('.add-post-box').style.display = 'none';
-        document.querySelector('.edit-post-box').style.display = 'none';
         document.querySelector('.profile-box').style.display = 'none';
-        document.querySelector('.profile-edit-box').style.display = 'none';
-        document.querySelector('.tag-box').style.display = 'none';
+
     }
 
     function GoHome(){

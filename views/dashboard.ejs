@@ -11,17 +11,31 @@
     <script src="/js/anime.min.js"></script> 
 </head>
 <body>
-    <!-- BASE PARTIALS -->
+    <!-- MOBILE VIEW -->
     <%- include('template-partials/base.ejs') %>
+
+    <!-- DASHBOARD-EDIT BOX -->
+    <div class="sign-lightpage">
+        <%- include('template-partials/dashboardbox.ejs') %>
+    </div>
+
     <!-- MAIN-SECTION -->
+    <div class="desktop-view">
+        <!-- NAV BAR -->
+        <%- include('template-partials/navbar.ejs') %>
     <div class="main-section">
         <!-- GRID CONTAINER -->
         <div class="grid-container">
             <div class="header">
                 <div class="header-title">DASHBOARD</div>
-                <div class="loggedin-user">Mhd Imran Mohsin</div>
-                <div class="loggedin-user-work C">CONTRIBUTOR</div>
-                <div class="loggedin-user-work V">VALIDATOR</div>
+                <div class="loggedin-user"><%=userName%></div>
+                <% if(roleid==1) {%>
+                    <div class="loggedin-user-work C">CONTRIBUTOR</div>
+                <% }else if(roleid==2){ %>
+                    <div class="loggedin-user-work V">VALIDATOR</div>
+                <% }else if(roleid==3){ %>   
+                    <div class="loggedin-user-work A">ADMIN</div>
+                <% } %> 
             </div>
             <div class="main">
                 <div class="graph_bar">
@@ -36,82 +50,94 @@
             </div>
             <div class="main2">
                 <table>
-                    <tr>
-                        <td class="tags">
-                            <div class="grid-container-tags">
-                                <div class="tag-type">
-                                    <!-- <i class="fab fa-youtube iconfile"></i> -->
-                                    <i class="fas fa-image iconfile"></i>
-                                    <div class="type-name">Image</div>
-                                </div>
-                                <div class="tag-title">
-                                    <div class="title-text">Machine Learning Sklearn</div>
-                                    <div class="author-span">Mohammed Imran Mohsin</div>
-                                </div>
-                                <div class="tag-tags tag-icon">
-                                    <div class="type-name-iconfile">Tags</div>
-                                    <i class="fas fa-tags iconfile"></i>
-                                </div>
-                                <div class="tag-view tag-icon">
-                                    <div class="type-name-iconfile">534</div>
-                                    <i class="fas fa-eye iconfile"></i>
-                                </div>
-                                <div class="tag-link tag-icon" onclick="Edit()">
-                                    <div class="type-name-iconfile" >Edit</div>
-                                    <i class="fas fa-edit iconfile"></i>
-                                </div>
-                                <div class="tag-desc tag-icon" onclick="Info()">
-                                    <div class="type-name-iconfile">Preview</div>
-                                    <i class="fas fa-info-circle iconfile"></i>
-                                </div>
-                                <form action="delete" method="POST" class="delete-post-form">
-                                    <div class="tag-report tag-icon" onClick="javascript:this.parentNode.submit();">
-                                        <div class="type-name-iconfile">Delete</div>
-                                        <i class="fas fa-trash-alt iconfile"></i>
-                                        <input type="number" name="id" value="1" style="display: none;">
+                    <% if(dashdocs.length>0){ %>
+                        <% dashdocs.forEach((element,index) => { %>
+                            <tr>
+                                <td class="tags">
+                                    <div class="grid-container-tags">
+                                        <% if(element.DOtype=="ARTICLE"){%>
+                                            <div class="tag-type">
+                                                <i class="fas fa-file iconfile"></i>
+                                                <div class="type-name"><%=element.DOtype%></div>
+                                            </div>
+                                        <% }else if(element.DOtype=="IMAGE"){ %> 
+                                            <div class="tag-type">
+                                                <i class="fas fa-image iconfile"></i>
+                                                <div class="type-name"><%=element.DOtype%></div>
+                                            </div>
+                                        <% }else if(element.DOtype=="PDF"){ %> 
+                                            <div class="tag-type">
+                                                <i class="fas fa-file-pdf iconfile"></i>
+                                                <div class="type-name"><%=element.DOtype%></div>
+                                            </div>
+                                        <% }else if(element.DOtype=="YOUTUBE"){ %> 
+                                            <div class="tag-type">
+                                                <i class="fab fa-youtube iconfile"></i>
+                                                <div class="type-name"><%=element.DOtype%></div>
+                                            </div>
+                                        <% } %> 
+                                            <div class="tag-title">
+                                                <div class="title-text"><%=element.DOtitle%></div>
+                                                <div class="author-span"><%=element.Ufname%> <%=element.Ulname%></div>
+                                            </div>
+                                        <% if(element.DOreport>0 && element.DOstatus=="PUBLIC"){ %> 
+                                            <div class="tag-flagged tag-icon">
+                                                <div class="type-name-iconfile">Reported</div>
+                                                <i class="fas fa-flag iconfile"></i>
+                                            </div>
+                                        <% }else if(element.DOreport==0 && element.DOstatus=="PUBLIC"){ %>
+                                            <div class="tag-unblock tag-icon">
+                                                <div class="type-name-iconfile">Published</div>
+                                                <i class="fas fa-clipboard-check iconfile"></i>
+                                            </div>
+                                        <% }else if(element.DOstatus=="BLOCKED"){ %>
+                                            <div class="tag-block tag-icon">
+                                                <div class="type-name-iconfile">Blocked</div>
+                                                <i class="fas fa-ban iconfile"></i>
+                                            </div>
+                                        <% }else if(element.DOstatus=="REJECTED"){ %>
+                                            <div class="tag-rejected tag-icon">
+                                                <div class="type-name-iconfile">Rejected</div>
+                                                <i class="fas fa-times iconfile"></i>
+                                            </div>
+                                        <% }else if(element.DOstatus=="CHECKING"){ %>
+                                            <div class="tag-waiting tag-icon">
+                                                <div class="type-name-iconfile">Waiting</div>
+                                                <i class="fas fa-hourglass-half iconfile"></i>
+                                            </div>
+                                        <% } %>
+                                        <div class="tag-view tag-icon">
+                                            <div class="type-name-iconfile"><%=element.DOviews%></div>
+                                            <i class="fas fa-eye iconfile"></i>
+                                        </div>
+                                        <div class="tag-tags tag-icon" onclick="Tags(<%=element.DOid%>)">
+                                            <div class="type-name-iconfile">Tags</div>
+                                            <i class="fas fa-tags iconfile"></i>
+                                        </div>
+                                        <div class="tag-link tag-icon" onclick="Edit(<%=element.DOid%>,<%=index%>)">
+                                            <div class="type-name-iconfile" >Edit</div>
+                                            <i class="fas fa-edit iconfile"></i>
+                                        </div>
+                                        <div class="tag-desc tag-icon" onclick="Info(<%=index%>)">
+                                            <div class="type-name-iconfile">Preview</div>
+                                            <i class="fas fa-info-circle iconfile"></i>
+                                        </div>
+                                        <form action="deletepost" method="POST" class="tag-report tag-icon" onClick="javascript:this.submit();">
+                                            <div class="type-name-iconfile">Delete</div>
+                                            <i class="fas fa-trash-alt iconfile"></i>
+                                            <input class="disable-input-class" name="DocID" value="<%=element.DOid%>">
+                                        </form>
                                     </div>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tags">
-                            <div class="grid-container-tags">
-                                <div class="tag-type">
-                                    <!-- <i class="fab fa-youtube iconfile"></i> -->
-                                    <i class="fas fa-image iconfile"></i>
-                                    <div class="type-name">Image</div>
-                                </div>
-                                <div class="tag-title">
-                                    <div class="title-text">Machine Learning Sklearn</div>
-                                    <div class="author-span">Mohammed Imran Mohsin</div>
-                                </div>
-                                <div class="tag-tags tag-icon" onclick="Tags()">
-                                    <div class="type-name-iconfile">Tags</div>
-                                    <i class="fas fa-tags iconfile"></i>
-                                </div>
-                                <div class="tag-view tag-icon">
-                                    <div class="type-name-iconfile">534</div>
-                                    <i class="fas fa-eye iconfile"></i>
-                                </div>
-                                <div class="tag-link tag-icon" onclick="Edit()">
-                                    <div class="type-name-iconfile" >Edit</div>
-                                    <i class="fas fa-edit iconfile"></i>
-                                </div>
-                                <div class="tag-desc tag-icon" onclick="Info()">
-                                    <div class="type-name-iconfile">Preview</div>
-                                    <i class="fas fa-info-circle iconfile"></i>
-                                </div>
-                                <form action="delete" method="POST" class="delete-post-form">
-                                    <div class="tag-report tag-icon" onClick="javascript:this.parentNode.submit();">
-                                        <div class="type-name-iconfile">Delete</div>
-                                        <i class="fas fa-trash-alt iconfile"></i>
-                                        <input type="number" name="id" value="1" style="display: none;">
-                                    </div>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
+                                </td>
+                            </tr>
+                        <% }) %> 
+                    <% } else { %>
+                        <tr>
+                            <td class="tags-nopost">
+                                You have not Posted anything yet !!
+                            </td>
+                        </tr>
+                    <% } %>   
                 </table>
             </div>
             <div class="footer">MADE BY <span>K A SAMARASIMHA REDDY</span> AND <span>AAYUSH SINGH</span></div>
@@ -123,7 +149,7 @@
     <script>
 
     var myChart=null;
-    var Line1 = [32,24,73,50,10,2]
+    var Line1 = [<%-chartViewsArray%>];
 
     createChart = async() => {
         if(myChart!=null){
@@ -133,7 +159,7 @@
         myChart = new Chart(ctx, {
             type: 'horizontalBar',
             data: {
-                labels: ["Blockchain ","Machine Learning ","Post 1","Post 1","Post 1","Post 1"],
+                labels: <%-JSON.stringify(chartDocsArray)%>,
                 datasets: [
                     {
                     label: 'Views',
@@ -214,8 +240,8 @@
     function NONE(span) {document.querySelector(span).style.display = 'none';}
 
     function CloseLightBox(){
-        document.querySelector('.sign-lightpage').style.display = 'none';
         CloseAllBoxes()
+        document.querySelector('.sign-lightpage').style.display = 'none';
     }
 
     function SignINLightBox(){
@@ -236,28 +262,58 @@
         document.querySelector('.add-post-box').style.display = 'flex';
     }
 
-    function Info(){
+    function Info(id){
         OpenLightBox()
         CloseAllBoxes()
+        docsList=<%-newDashDocs%>;
+        document.getElementById("info-type-text").innerHTML=docsList[id].DOtype
+        document.getElementById("info-header-text").innerHTML=docsList[id].DOtitle
+        document.getElementById("info-link-text").value=docsList[id].DOlink
+        document.getElementById("info-docid-text").value=docsList[id].DOid
+        document.getElementById("info-author-text").innerHTML=`${docsList[id].Ufname} ${docsList[id].Ulname}`
+        document.getElementById("info-desc-text").innerHTML=docsList[id].DOdesc
         document.querySelector('.info-box').style.display = 'flex';
+        RemoveIcons()
+        if(docsList[id].DOtype==="PDF"){
+            document.getElementById("info-icon").classList.add("fa-file-pdf")
+            document.getElementById("info-icon").classList.add("fas")
+        }
+        if(docsList[id].DOtype==="ARTICLE"){
+            document.getElementById("info-icon").classList.add("fa-file")
+            document.getElementById("info-icon").classList.add("fas")
+        }
+        if(docsList[id].DOtype==="YOUTUBE"){
+
+            document.getElementById("info-icon").classList.add("fa-youtube")
+            document.getElementById("info-icon").classList.add("fab")
+        }
+        if(docsList[id].DOtype==="IMAGE"){
+            document.getElementById("info-icon").classList.add("fa-image")
+            document.getElementById("info-icon").classList.add("fas")
+        }
     }
 
-    function Edit(){
+    function RemoveIcons(){
+        document.getElementById("info-icon").classList.remove("fab")
+        document.getElementById("info-icon").classList.remove("fas")
+        document.getElementById("info-icon").classList.remove("fa-youtube")
+        document.getElementById("info-icon").classList.remove("fa-file")
+        document.getElementById("info-icon").classList.remove("fa-file-pdf")
+        document.getElementById("info-icon").classList.remove("fa-image")
+    }
+
+    function Edit(tid,id){
         OpenLightBox()
         CloseAllBoxes()
+        docsList=<%-newDashDocs%>;
+        tagsList=<%-newDashTags%>;
+        document.getElementById("editpost-type-text").innerHTML=`Type: ${docsList[id].DOtype}`
+        document.getElementById("editpost-header-text").value=docsList[id].DOtitle
+        document.getElementById("editpost-link-text").value=docsList[id].DOlink
+        document.getElementById("editpost-tags-text").innerHTML=tagsList[tid].TagNames
+        document.getElementById("editpost-desc-text").innerHTML=docsList[id].DOdesc
+        document.getElementById("editpost-id-text").value=docsList[id].DOid
         document.querySelector('.edit-post-box').style.display = 'flex';
-    }
-
-    function Tags(){
-        OpenLightBox()
-        CloseAllBoxes()
-        document.querySelector('.tag-box').style.display = 'block';
-    }
-
-    function ProfileView(){
-        OpenLightBox()
-        CloseAllBoxes()
-        document.querySelector('.profile-box').style.display = 'flex';
     }
 
     function Delete(){
@@ -270,14 +326,24 @@
     }
 
     function CloseAllBoxes(){
-        document.querySelector('.signup-box').style.display = 'none';
-        document.querySelector('.signin-box').style.display = 'none';
-        document.querySelector('.info-box').style.display = 'none';
         document.querySelector('.add-post-box').style.display = 'none';
         document.querySelector('.edit-post-box').style.display = 'none';
-        document.querySelector('.profile-box').style.display = 'none';
-        document.querySelector('.profile-edit-box').style.display = 'none';
+        document.querySelector('.info-box').style.display = 'none';
         document.querySelector('.tag-box').style.display = 'none';
+    }
+
+    divTag = document.getElementById("tag-box")
+
+    function Tags(id){
+        OpenLightBox()
+        CloseAllBoxes()
+        divTag.innerHTML = "";
+        tagsList=<%-newDashTags%>;
+        divTag = document.getElementById("tag-box")
+        tagsList[id].TagNames.forEach((element,index) => {
+            divTag.innerHTML+=`<span class="input-tag">${element}</span>`
+        })
+        document.querySelector('.tag-box').style.display = 'block';
     }
 
     function GoHome(){
@@ -286,6 +352,14 @@
 
     function Logout(){
         console.log("LOGOUT")
+    }
+
+    function GOLInk(link){
+        window.open(link)
+    }
+
+    function Topic(){
+        window.location.href = `http://localhost:4030/topic`
     }
 
     function Members(){
@@ -299,7 +373,7 @@
     function Profile(){
         window.location.href = `http://localhost:4030/profile`
     }
-
+    
     function Validator(){
         window.location.href = `http://localhost:4030/validatorpost`
     }

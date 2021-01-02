@@ -1,0 +1,101 @@
+   <!-- SIGN IN BOX -->
+<div class="info-cancel" onclick="CloseLightBox()">
+    <i class="fas fa-times icontimes"></i>
+</div>
+<div class="signin-box">
+    <p class="signin-header">SIGN IN</p>
+    <form class="form-class" action="signin" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" name="username" class="input-bar" required autocomplete="false" value="admin">
+        <label for="password">Password:</label>
+        <input type="password" name="password" class="input-bar" required autocomplete="false" value="admin">
+        <input type="text" name="signAddress" id="signin-address" class="disable-input-class">
+        <input type="text" name="signValue" id="signin-value" class="disable-input-class" value="signin">
+        <script>
+            SIGNIN_VALUE=document.getElementById("signin-address")
+            SIGNIN_VALUE.value=window.location.pathname
+        </script>
+        <div class="form-class-buttons">
+            <button type="submit" class="signin">Sign In</button>
+            <button type="button" class="cancel" onclick="CloseLightBox()">Close</button>
+        </div>
+    </form>
+</div>
+
+<!-- SIGN UP BOX -->
+<div class="signup-box">
+    <p class="signup-header">SIGN UP</p>
+    <form class="form-class" action="signup" method="POST">
+        <label for="fname">First Name:</label>
+        <input type="text" name="fname" class="input-bar" required value="testfname">
+        <label for="lanme">Last Name:</label>
+        <input type="text" name="lname" class="input-bar" required value="testlname">
+        <label for="email">Email ID:</label>
+        <input type="email" name="email" class="input-bar" required value="test@email.com">
+        <label for="username">Username:</label>
+        <input type="text" name="username" class="input-bar" required value="testuser">
+        <label for="password">Password:</label>
+        <input type="password" name="password" class="input-bar" required value="testpass">
+        <input type="text" name="signAddress" id="signup-address" class="disable-input-class">
+        <input type="text" name="signValue" id="signup-value" class="disable-input-class" value="signup">
+        <script>
+            SIGNIN_VALUE=document.getElementById("signup-address")
+            SIGNIN_VALUE.value=window.location.pathname
+        </script>
+        <div class="form-class-buttons">
+            <button type="submit" class="signup">Sign Up</button>
+            <button type="button" class="cancel" onclick="CloseLightBox()">Close</button>
+        </div>
+    </form>
+</div>
+
+    <!-- ADD POST BOX -->
+    <div class="add-post-box">
+        <p class="add-post-header">Add Post</p>
+        <form class="form-class" action="addpost" method="POST">
+            <label for="title">Title:</label>
+            <input type="text" name="title" class="input-bar" required value="Google Website">
+            <label for="type">Type:</label>
+                <div class="add-post-options">
+                    <div class="add-post-option1">
+                        <label for="youtube">
+                            <input type="radio" id="youtube" name="type" value="YOUTUBE" required checked>Youtube
+                        </label>
+                    </div>
+                    <div class="add-post-option2">
+                        <label for="pdf">
+                            <input type="radio" id="pdf" name="type" value="PDF">
+                            PDF
+                        </label>
+                    </div>
+                    <div class="add-post-option3">
+                        <label for="article">
+                            <input type="radio" id="article" name="type" value="ARTICLE" required>
+                            Article
+                        </label>
+                    </div>
+                    <div class="add-post-option4">
+                        <label for="image">
+                            <input type="radio" id="image" name="type" value="IMAGE">
+                            Image
+                        </label>
+                    </div>
+                </div>
+            <label for="link">Link:</label>
+            <input type="url" name="link" class="input-bar" required value="https://www.google.com/">
+            <label for="desc">Description:</label>
+            <textarea type="text" name="desc" id="textarea-desc" class="textarea-desc" required>Description of www.google.com</textarea>
+            <label for="tags">Tags:</label>
+            <textarea type="text" name="tags" id="textarea-tags-add" class="textarea-tags" required placeholder="Enter max 5 tags use `,` to seperate each tag" >Documents, Websites
+            </textarea>
+            <input type="text" name="signAddress" id="addpost-address" class="disable-input-class">
+            <script>
+                ADDPOST_VALUE=document.getElementById("addpost-address")
+                ADDPOST_VALUE.value=window.location.pathname
+            </script>
+            <div class="form-class-buttons">
+                <button type="submit" class="addpost">Post</button>
+                <button type="button" class="cancel" onclick="CloseLightBox()">Close</button>
+            </div>
+        </form>
+    </div>
