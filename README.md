@@ -3,7 +3,7 @@ WEB Project 2020 7th SEM
 
 
 
-##SETUP
+## SETUP
 
 1. Download and Extract the Zip File
 
