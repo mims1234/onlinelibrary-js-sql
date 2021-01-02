@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Digital Library - HOME</title>
+    <link rel="stylesheet" href="../CSS/base.css">
+    <link rel="stylesheet" href="../CSS/home.css?verion=1.0">
+    <script src="/JS/icons.js"></script>
+    <!-- ANIMEJS -->
+    <script src="/js/anime.min.js"></script> 
+</head>
+<body>
+    <!-- MOBILE VIEW -->
+    <%- include('template-partials/base.ejs') %>
+
+    <!-- HOME BOXES -->
+    <div class="sign-lightpage">
+        <%- include('template-partials/homebox.ejs') %>
+    </div>
+
+    <!-- MAIN-SECTION -->
+    <div class="desktop-view">
+        <!-- NAV BAR -->
+        <%- include('template-partials/navbar.ejs') %>
+        <div class="main-section">
+            <!-- GRID CONTAINER -->
+            <div class="grid-container">
+                <div class="header">SELECT A TOPIC</div>
+                <div class="main">
+                    <%if(tags.length>0){%>
+                        <table>
+                        <% tags.forEach((result,index) => { %>
+                            <%if((index+3)%3==0){%>
+                                <tr>
+                                    <td>
+                                        <form action="topic" method="POST" id="gotopic-form" >
+                                            <div class="tags tag<%=result.ID%>" onmouseover="HoverTagOver('.span<%=result.ID%>','.click-span<%=result.ID%>')" onmouseout="HoverTagOut('.span<%=result.ID%>','.click-span<%=result.ID%>')" onClick="javascript:this.parentNode.submit();">
+                                                <%=result.name%> <br><span class="span span<%=result.ID%>">
+                                                <%=result.count%> Posts<br></span><span class="click-span click-span<%=result.ID%>">(Click Here)</span>
+                                            </div>
+                                            <input class="disable-input-class" type="text" name="tagID" value="<%=result.ID%>">
+                                            <input class="disable-input-class" type="text" name="tagCount" value="<%=result.count%>">
+                                            <input class="disable-input-class" type="text" name="tagName" value="<%=result.name%>">
+                                        </form>
+                                    </td>
+                                </tr>
+                            <% }%>
+                        <% });%>
+                        </table>
+                        <table>
+                        <% tags.forEach((result,index) => { %>
+                            <%if((index+3)%3==1){%>
+                                <tr>
+                                    <td>
+                                        <form action="topic" method="POST" id="gotopic-form" >
+                                            <div class="tags tag<%=result.ID%>" onmouseover="HoverTagOver('.span<%=result.ID%>','.click-span<%=result.ID%>')" onmouseout="HoverTagOut('.span<%=result.ID%>','.click-span<%=result.ID%>')" onClick="javascript:this.parentNode.submit();">
+                                                <%=result.name%> <br><span class="span span<%=result.ID%>">
+                                                <%=result.count%> Posts<br></span><span class="click-span click-span<%=result.ID%>">(Click Here)</span>
+                                            </div>
+                                            <input class="disable-input-class" type="text" name="tagID" value="<%=result.ID%>">
+                                            <input class="disable-input-class" type="text" name="tagCount" value="<%=result.count%>">
+                                            <input class="disable-input-class" type="text" name="tagName" value="<%=result.name%>">
+                                        </form>
+                                    </td>
+                                </tr>
+                            <% }%>
+                        <% });%>
+                        </table>
+                        <table>
+                        <% tags.forEach((result,index) => { %>
+                            <%if((index+3)%3==2){%>                  
+                                <tr>
+                                    <td>
+                                        <form action="topic" method="POST" id="gotopic-form" >
+                                            <div class="tags tag<%=result.ID%>" onmouseover="HoverTagOver('.span<%=result.ID%>','.click-span<%=result.ID%>')" onmouseout="HoverTagOut('.span<%=result.ID%>','.click-span<%=result.ID%>')" onClick="javascript:this.parentNode.submit();">
+                                                <%=result.name%> <br><span class="span span<%=result.ID%>">
+                                                <%=result.count%> Posts<br></span><span class="click-span click-span<%=result.ID%>">(Click Here)</span>
+                                            </div>
+                                            <input class="disable-input-class" type="text" name="tagID" value="<%=result.ID%>">
+                                            <input class="disable-input-class" type="text" name="tagCount" value="<%=result.count%>">
+                                            <input class="disable-input-class" type="text" name="tagName" value="<%=result.name%>">
+                                        </form>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        <% });%>
+                        </table>
+                    <%} else {%>
+                        <table>
+                                <tr>
+                                    <td>
+                                        <div class="tags-nopost">
+                                            No Topics Available Right Now <br>
+                                        </div>
+                                    </td>
+                                </tr>  
+                        </table>  
+                    <% } %> 
+                </div>
+                <div class="footer">MADE BY <span>K A SAMARASIMHA REDDY</span> AND <span>AAYUSH SINGH</span></div>
+            </div>
+            <div class="bottomspace"></div>
+        </div>
+    </div>
+    <script>
+    function HoverTagOver(spanA,spanB){
+        // console.log(spanA)
+        // console.log(spanB)
+        anime({
+            targets: spanA,
+            fontSize: "24px",
+            opacity:1,
+            begin: BLOCK(spanA),
+            duration:0
+        });
+        anime({
+            targets: spanB,
+            top:"20px",
+            fontSize: "12px",
+            opacity:1,
+            begin: BLOCK(spanB),
+            duration:0
+        });
+    }
+    function HoverTagOut(spanA,spanB){
+        anime({
+            targets: spanA,
+            fontSize: "12px",
+            opacity:0,
+            begin: NONE(spanA),
+            duration:0,
+        });
+        anime({
+            targets: spanB,
+            fontSize: "12px",
+            opacity:0,
+            begin: NONE(spanB),
+            duration:0
+        });
+    }
+
+    function BLOCK(span) {document.querySelector(span).style.display = 'block';}
+
+    function NONE(span) {document.querySelector(span).style.display = 'none';}
+
+    function CloseLightBox(){
+        CloseAllBoxes()
+        document.querySelector('.sign-lightpage').style.display = 'none';
+    }
+
+    function SignINLightBox(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.signin-box').style.display = 'flex';
+    }
+
+    function SignUPLightBox(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.signup-box').style.display = 'flex';
+    }
+
+    function Add_Post(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.add-post-box').style.display = 'flex';
+    }
+
+    function Info(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.info-box').style.display = 'flex';
+    }
+
+    function Edit(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.edit-post-box').style.display = 'flex';
+    }
+
+    function Delete(){
+        FORM = document.querySelector('delete-post-form');
+        console.log("Delete")
+    }
+
+    function OpenLightBox(){
+        document.querySelector('.sign-lightpage').style.display = 'flex';
+    }
+
+    function CloseAllBoxes(){
+        document.querySelector('.signup-box').style.display = 'none';
+        document.querySelector('.signin-box').style.display = 'none';
+        document.querySelector('.add-post-box').style.display = 'none';
+    }
+
+    function GoHome(){
+        window.location.href = `http://localhost:4030/`
+    }
+
+    function Logout(){
+        console.log("LOGOUT")
+    }
+
+    function Topic(){
+        window.location.href = `http://localhost:4030/topic`
+    }
+
+    function Members(){
+        window.location.href = `http://localhost:4030/members`
+    }
+    
+    function Dashboard(){
+        window.location.href = `http://localhost:4030/dashboard`
+    }
+
+    function Profile(){
+        window.location.href = `http://localhost:4030/profile`
+    }
+    
+    function Validator(){
+        window.location.href = `http://localhost:4030/validatorpost`
+    }
+
+    </script>
+</body>
+</html>

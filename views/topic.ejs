@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Digital Library - Topics</title>
+    <link rel="stylesheet" href="../CSS/base.css">
+    <link rel="stylesheet" href="../CSS/topics.css">
+    <script src="/JS/icons.js"></script>
+    <!-- ANIMEJS -->
+    <script src="/js/anime.min.js"></script> 
+</head>
+<body>
+    <!-- MOBILE VIEW -->
+    <%- include('template-partials/base.ejs') %>
+
+    <!-- TOPIC-BOXES -->
+    <div class="sign-lightpage">
+        <%- include('template-partials/topicbox.ejs') %>
+    </div>
+
+    <!-- MAIN-SECTION -->
+    <div class="desktop-view">
+    <!-- NAV BAR -->
+    <%- include('template-partials/navbar.ejs') %>
+    <!-- MAIN-SECTION -->
+    <div class="main-section">
+        <!-- GRID CONTAINER -->
+        <div class="grid-container">
+            <div class="header">
+                <span class="topic-title"><%=tagName%></span>
+                <span class="post-count">Total Posts: <span> <%=tagCount%></span></span>
+            </div>
+            <div class="main">
+                <table>
+                    <%if(docs.length>0){%>
+                        <% docs.forEach((element,index) => {%>
+                            <tr>
+                                <td class="tags">
+                                    <div class="grid-container-tags">
+                                        <% if(element.DOtype=="ARTICLE"){%>
+                                            <div class="tag-type">
+                                                <i class="fas fa-file iconfile"></i>
+                                                <div class="type-name"><%=element.DOtype%></div>
+                                            </div>
+                                        <% }else if(element.DOtype=="IMAGE"){ %> 
+                                            <div class="tag-type">
+                                                <i class="fas fa-image iconfile"></i>
+                                                <div class="type-name"><%=element.DOtype%></div>
+                                            </div>
+                                        <% }else if(element.DOtype=="PDF"){ %> 
+                                            <div class="tag-type">
+                                                <i class="fas fa-file-pdf iconfile"></i>
+                                                <div class="type-name"><%=element.DOtype%></div>
+                                            </div>
+                                        <% }else if(element.DOtype=="YOUTUBE"){ %> 
+                                            <div class="tag-type">
+                                                <i class="fab fa-youtube iconfile"></i>
+                                                <div class="type-name"><%=element.DOtype%></div>
+                                            </div>
+                                        <% } %>  
+                                        <div class="tag-title">
+                                            <div class="title-text"><%=element.DOtitle%> </div>
+                                            <div class="author-span"><%=element.Ufname%> <%=element.Ulname%></div>
+                                        </div>
+                                        <form action="redirect" method="POST" target="_blank">
+                                            <div class="tag-link tag-icon" onClick="javascript:this.parentNode.submit()">
+                                                <div class="type-name-iconfile">Link</div>
+                                                <i class="fas fa-link iconfile"></i>
+                                                <input class="disable-input-class" type="text" name="Link" value="<%=element.DOlink%>">
+                                                <input class="disable-input-class" type="text" name="DocID" value="<%=element.DOid%>">
+                                            </div>
+                                        </form>
+                                        <div class="tag-desc tag-icon" onclick="Info(<%=index%>)">
+                                            <div class="type-name-iconfile">Info</div>
+                                            <i class="fas fa-info-circle iconfile"></i>
+                                        </div>
+                                        <form action="reportpost" method="POST">
+                                            <div class="tag-report tag-icon" onClick="javascript:this.parentNode.submit()">
+                                                <div class="type-name-iconfile">Report</div>
+                                                <i class="fas fa-flag iconfile"></i>
+                                                <input class="disable-input-class" type="text" name="postID" value="<%=element.DOid%>">
+                                                <input class="disable-input-class" type="text" name="reportValue" value="<%=element.DOreport%>">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                       <% }) %> 
+                    <% } %> 
+                </table>
+            </div>
+            <div class="footer">MADE BY <span>K A SAMARASIMHA REDDY</span> AND <span>AAYUSH SINGH</span></div>
+        </div>
+        <div class="bottomspace"></div>
+    </div>
+    <script>
+
+    function BLOCK(span) {document.querySelector(span).style.display = 'flex';}
+    function NONE(span) {document.querySelector(span).style.display = 'none';}
+
+    function CloseLightBox(){
+        CloseAllBoxes()
+        document.querySelector('.sign-lightpage').style.display = 'none';
+    }
+
+    function SignINLightBox(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.signin-box').style.display = 'flex';
+    }
+
+    function SignUPLightBox(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.signup-box').style.display = 'flex';
+    }
+
+    function Add_Post(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.add-post-box').style.display = 'flex';
+    }
+
+    function Info(id){
+        OpenLightBox()
+        CloseAllBoxes()
+        docsList=<%-newDocsList%>;
+        console.log(docsList[id].DOlink)
+        document.getElementById("info-type-text").innerHTML=docsList[id].DOtype
+        document.getElementById("info-header-text").innerHTML=docsList[id].DOtitle
+        document.getElementById("info-link-text").value=docsList[id].DOlink
+        document.getElementById("info-docid-text").value=docsList[id].DOid
+        document.getElementById("info-author-text").innerHTML=`${docsList[id].Ufname} ${docsList[id].Ulname}`
+        document.getElementById("info-desc-text").innerHTML=docsList[id].DOdesc
+        document.getElementById("info-report-id-text").value=docsList[id].DOid
+        document.getElementById("info-report-reportValue-text").value=docsList[id].DOreport
+        document.querySelector('.info-box').style.display = 'flex';
+    }
+
+    function Edit(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.edit-post-box').style.display = 'flex';
+    }
+
+    function Delete(){
+        FORM = document.querySelector('delete-post-form');
+        console.log("Delete")
+    }
+
+    function OpenLightBox(){
+        document.querySelector('.sign-lightpage').style.display = 'flex';
+    }
+
+    function CloseAllBoxes(){
+        document.querySelector('.signup-box').style.display = 'none';
+        document.querySelector('.signin-box').style.display = 'none';
+        document.querySelector('.info-box').style.display = 'none';
+        document.querySelector('.add-post-box').style.display = 'none';
+    }
+
+    function GoHome(){
+        window.location.href = `http://localhost:4030/`
+    }
+
+    function Logout(){
+        console.log("LOGOUT")
+    }
+
+    function GOLInk(link){
+        window.open(link)
+    }
+
+    function Topic(){
+        window.location.href = `http://localhost:4030/topic`
+    }
+
+    function Members(){
+        window.location.href = `http://localhost:4030/members`
+    }
+    
+    function Dashboard(){
+        window.location.href = `http://localhost:4030/dashboard`
+    }
+
+    function Profile(){
+        window.location.href = `http://localhost:4030/profile`
+    }
+    
+    function Validator(){
+        window.location.href = `http://localhost:4030/validatorpost`
+    }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Digital Library - Topics</title>
+    <link rel="stylesheet" href="../CSS/base.css">
+    <link rel="stylesheet" href="../CSS/members.css">
+    <script src="/JS/icons.js"></script>
+    <!-- ANIMEJS -->
+    <script src="/js/anime.min.js"></script> 
+</head>
+<body>
+    <!-- MOBILE VIEW -->
+    <%- include('template-partials/base.ejs') %>
+
+    <!-- PROFILE-EDIT BOX -->
+    <div class="sign-lightpage">
+        <%- include('template-partials/membersbox.ejs') %>
+    </div>
+
+    <!-- MAIN-SECTION -->
+    <div class="desktop-view">
+        <!-- NAV BAR -->
+        <%- include('template-partials/navbar.ejs') %>
+    <div class="main-section">
+        <!-- GRID CONTAINER -->
+        <div class="grid-container">
+            <div class="header">
+                MEMBERS
+            </div>
+            <div class="main">
+                <table>
+                    <% if(members.length>0){ %>
+                        <% members.forEach((elements,index)=>{ %>
+                            <tr>
+                                <td class="tags">
+                                    <div class="grid-container-tags">
+                                        <form action="updateRoleMember">
+                                            <div class="tag-type">
+                                                <% if(elements.UCrole===1){ %> 
+                                                    <i class="fas fa-user iconfile"></i>
+                                                    <div class="type-name">USER</div>
+                                                <%}else if(elements.UCrole===2){%> 
+                                                    <i class="fas fa-user-cog iconfile"></i>
+                                                    <div class="type-name">VALIDATOR</div>
+                                                <%}else{%> 
+                                                    <i class="fas fa-user-shield iconfile"></i>
+                                                    <div class="type-name">ADMIN</div>
+                                                <%}%>
+                                            </div>
+                                        </form>
+                                        <div class="tag-title">
+                                            <div class="title-text"><%=elements.Ufname%> <%=elements.Ulname%> </div>
+                                            <div class="author-span">Post: <span><%=elements.counts%></span> Views: <span><%=elements.views%></span></div>
+                                        </div>
+                                        <% if(elements.UCrole===1){ %> 
+                                            <form action="updateRoleMember" method="POST" >
+                                                <div class="tag-validator tag-icon" onClick="javascript:this.parentNode.submit();">
+                                                    <div class="type-name-iconfile">Make Validator</div>
+                                                    <i class="fas fa-user-cog iconfile"></i>
+                                                    <input class="disable-input-class" type="text" name="memberID" value="<%=elements.Uid%>">
+                                                    <input class="disable-input-class" type="text" name="memberRole" value="1">
+                                                </div>
+                                            </form>
+                                        <%}else if(elements.UCrole===2){%> 
+                                            <form action="updateRoleMember" method="POST">
+                                                <div class="tag-contributer tag-icon" onClick="javascript:this.parentNode.submit();">
+                                                    <div class="type-name-iconfile">Make Contributor</div>
+                                                    <i class="fas fa-user iconfile"></i>
+                                                    <input class="disable-input-class" type="text" name="memberID" value="<%=elements.Uid%>">
+                                                    <input class="disable-input-class" type="text" name="memberRole" value="2"> 
+                                                </div>
+                                            </form>
+                                        <%}else{%> 
+                                            <form action="updateRoleMember" method="POST">
+                                                <div class="tag-admin tag-icon">
+                                                    <div class="type-name-iconfile">ADMIN</div>
+                                                    <i class="fas fa-user-shield iconfile"></i>
+                                                    <input class="disable-input-class" type="text" name="memberID" value="<%=elements.Uid%>">
+                                                    <input class="disable-input-class" type="text" name="memberRole" value="2">
+                                                </div>
+                                            </form>
+                                        <%}%>
+                                        <div class="tag-desc tag-icon" onClick="ProfileView(<%=index%>)">
+                                            <div class="type-name-iconfile">Profile</div>
+                                            <i class="fas fa-id-card iconfile"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>     
+                        <%}) %>     
+                    <% } %>  
+                </table>
+            </div>
+            <div class="footer">MADE BY <span>K A SAMARASIMHA REDDY</span> AND <span>AAYUSH SINGH</span></div>
+        </div>
+        <div class="bottomspace"></div>
+    </div>
+    <script>
+
+    function ChangeRole(){
+        
+    }
+
+    function BLOCK(span) {document.querySelector(span).style.display = 'flex';}
+    function NONE(span) {document.querySelector(span).style.display = 'none';}
+
+    function CloseLightBox(){
+        document.querySelector('.sign-lightpage').style.display = 'none';
+        CloseAllBoxes()
+    }
+
+    function SignINLightBox(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.signin-box').style.display = 'flex';
+    }
+
+    function SignUPLightBox(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.signup-box').style.display = 'flex';
+    }
+
+    function Add_Post(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.add-post-box').style.display = 'flex';
+    }
+
+    function Info(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.info-box').style.display = 'flex';
+    }
+
+    function Edit(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.edit-post-box').style.display = 'flex';
+    }
+
+    function Tags(){
+        OpenLightBox()
+        CloseAllBoxes()
+        document.querySelector('.tag-box').style.display = 'flex';
+    }
+
+    function ProfileView(id){
+        OpenLightBox()
+        CloseAllBoxes()
+        profileList=<%-newMembersList%>;
+        console.log(profileList)
+        document.getElementById("profile-fname-text").innerHTML=profileList[id].Ufname
+        document.getElementById("profile-lname-text").innerHTML=profileList[id].Ulname
+        document.getElementById("profile-email-text").innerHTML=profileList[id].Uemail
+        document.getElementById("profile-username-text").innerHTML=profileList[id].UCusername
+        document.querySelector('.profile-box').style.display = 'flex';
+    }
+
+    function Delete(){
+        FORM = document.querySelector('delete-post-form');
+        console.log("Delete")
+    }
+
+    function OpenLightBox(){
+        document.querySelector('.sign-lightpage').style.display = 'flex';
+    }
+
+    function CloseAllBoxes(){
+        document.querySelector('.add-post-box').style.display = 'none';
+        document.querySelector('.profile-box').style.display = 'none';
+
+    }
+
+    function GoHome(){
+        window.location.href = `http://localhost:4030/`
+    }
+
+    function Logout(){
+        console.log("LOGOUT")
+    }
+
+    function Members(){
+        window.location.href = `http://localhost:4030/members`
+    }
+    
+    function Dashboard(){
+        window.location.href = `http://localhost:4030/dashboard`
+    }
+
+    function Profile(){
+        window.location.href = `http://localhost:4030/profile`
+    }
+    
+    function Validator(){
+        window.location.href = `http://localhost:4030/validatorpost`
+    }
+
+    </script>
+</body>
+</html>

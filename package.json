@@ -1,0 +1,36 @@
+{
+  "name": "ServerCode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run open && nodemon app.js",
+    "open": "start http://localhost:4030/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "WEB Project 2020 7th SEM",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.6",
+    "npm": "^6.14.10",
+    "number-formatter": "^1.2.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mims1234/online-digital-library.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mims1234/online-digital-library/issues"
+  },
+  "homepage": "https://github.com/mims1234/online-digital-library#readme"
+}

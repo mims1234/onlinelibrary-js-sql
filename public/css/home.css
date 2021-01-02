@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'Bahnschrift Static Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Bahnschrift Static Regular'), url('../font/BS_Static_Regular.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Bahnschrift Static Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Bahnschrift Static Light'), url('../font/BS_Static_Light.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Bahnschrift Static Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Bahnschrift Static Bold'), url('../font/BS_Static_Bold.woff') format('woff');
+}
+
+@media only screen and (min-device-width : 1000px) {
+
+    /* MAIN SECTION */
+    .main-section{
+        padding-top:55px;
+    }
+
+    .grid-container{
+        display: grid;
+        grid-template-areas:
+          'header header headerd'
+          'main main main'
+          'main main main'
+          'footer footer footer';
+        /* background-color: #2196F3; */
+        /* padding: 10px; */
+    }
+
+    .header{ grid-area: header;}
+    .rightside{ grid-area: rightside;}
+    .main{ grid-area: main;}
+    .leftside{ grid-area: leftside;}
+    .footer{ grid-area: footer;}
+
+    .header{
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 10vh;
+        font-size: 30px;
+        color: white;
+    }
+
+    .main{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        height: 90vh;
+        /* border-style: solid;
+        border-color: red; */
+    }
+
+    .tags{
+        display: flex;
+        color: white;
+        background-color:#F2771A;
+        flex-direction: column;
+        height: 100px;
+        width: 25vw;
+        font-size: 20px;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        transition: 0.1s ease-in-out;
+    }
+
+    .tags-nopost{
+        display: flex;
+        color: white;
+        background-color:#ff7f1db6;
+        flex-direction: column;
+        height: 300px;
+        width: 75vw;
+        font-size: 20px;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        transition: 0.1s ease-in-out;
+    }
+
+    .span{
+        display: none;
+        font-size:20px ;
+        opacity: 0;
+        color: #F2771A;
+    }
+
+    .click-span{
+        display: none;
+        font-size:8px;
+        opacity: 0;
+        color:black;
+    }
+
+    .tags:hover{
+        font-size: 30px;
+        color:black;
+        background-color: rgb(255, 255, 255);
+        transition: 0.3s ease-in-out;
+        padding: 50px 0px;
+        cursor: pointer;
+    }
+
+}

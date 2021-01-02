@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Digital Library - HOME</title>
+    <link rel="stylesheet" href="../CSS/base.css">
+    <link rel="stylesheet" href="../CSS/redirect.css?verion=1.0">
+    <script src="/JS/icons.js"></script>
+    <!-- ANIMEJS -->
+    <script src="/js/anime.min.js"></script> 
+</head>
+<body onload="NowPlay()">
+    <!-- MOBILE VIEW -->
+    <%- include('template-partials/base.ejs') %>
+
+    <!-- MAIN-SECTION -->
+    <div class="desktop-view">
+        <div class="main-section">
+            <!-- GRID CONTAINER -->
+            <div class="grid-container">
+                <div class="main">
+                    <h1 class="ml9">
+                        <span class="text-wrapper">
+                          <span class="letters">Redirecting to your Site Shortly</span>
+                        </span>
+                    </h1>
+                </div>
+                <div class="footer">MADE BY <span>K A SAMARASIMHA REDDY</span> AND <span>AAYUSH SINGH</span></div>
+            </div>
+            <div class="bottomspace"></div>
+        </div>
+    </div>
+    <script>
+        // Wrap every letter in a span
+        var textWrapper = document.querySelector('.ml9 .letters');
+        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+        anime.timeline({loop: true})
+        .add({
+            targets: '.ml9 .letter',
+            scale: [0, 1],
+            duration: 1500,
+            elasticity: 600,
+            delay: (el, i) => 45 * (i+1)
+        }).add({
+            targets: '.ml9',
+            opacity: 0,
+            duration: 1000,
+            easing: "easeOutExpo",
+            delay: 1000
+        });
+
+
+        function NowPlay(){
+            setTimeout(function(){
+                LINK();
+                console.log("3secs DONE")
+            },5000)
+        }
+
+        function LINK(){
+            link="<%-LINK%>";
+            console.log("GOT LINK")
+            CallURL(link)
+        }
+
+        function CallURL(){
+            GoLink(link)
+        }
+
+        function GoLink(link){ 
+            console.log("REACHED")
+            window.location.href = link
+        }
+    </script>
+</body>
+</html>

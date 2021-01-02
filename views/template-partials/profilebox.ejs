@@ -1,0 +1,81 @@
+   <!-- SIGN IN BOX -->
+<div class="info-cancel" onclick="CloseLightBox()">
+    <i class="fas fa-times icontimes"></i>
+</div>
+
+<!-- PROFILE EDIT BOX -->
+<div class="profile-edit-box">
+    <p class="profile-edit-header">PROFILE EDIT</p>
+    <form class="form-class" action="updateprofile" method="POST">
+        <label for="fname">First Name:</label>
+        <input type="text" name="fname" class="input-bar" value="<%=profile[0].Ufname%>" required>
+        <label for="lanme">Last Name:</label>
+        <input type="text" name="lname" class="input-bar" value="<%=profile[0].Ulname%>" required>
+        <label for="email">Email ID:</label>
+        <input type="email" name="email" class="input-bar" value="<%=profile[0].Uemail%>" required>
+        <label for="username">Username:</label>
+        <input type="text" name="username" class="input-bar" value="<%=profile[0].UCusername%>" required>
+        <label for="password">Password:(Same or New Pass)</label>
+        <input type="password" name="password" class="input-bar" required>
+        <input type="text" name="signAddress" id="profile-edit-address" class="disable-input-class">
+        <script>
+            PROFILE_VALUE=document.getElementById("profile-edit-address")
+            PROFILE_VALUE.value=window.location.pathname
+        </script>
+        <div class="form-class-buttons">
+            <button type="submit" class="signup">Update Profile</button>
+            <button type="button" class="cancel" onclick="CloseLightBox()">Close</button>
+        </div>
+    </form>
+</div>
+
+<!-- ADD POST BOX -->
+<div class="add-post-box">
+    <p class="add-post-header">Add Post</p>
+    <form class="form-class" action="addpost" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="title" class="input-bar" required value="Google Website">
+        <label for="type">Type:</label>
+            <div class="add-post-options">
+                <div class="add-post-option1">
+                    <label for="youtube">
+                        <input type="radio" id="youtube" name="type" value="YOUTUBE" required checked>Youtube
+                    </label>
+                </div>
+                <div class="add-post-option2">
+                    <label for="pdf">
+                        <input type="radio" id="pdf" name="type" value="PDF">
+                        PDF
+                    </label>
+                </div>
+                <div class="add-post-option3">
+                    <label for="article">
+                        <input type="radio" id="article" name="type" value="ARTICLE" required>
+                        Article
+                    </label>
+                </div>
+                <div class="add-post-option4">
+                    <label for="image">
+                        <input type="radio" id="image" name="type" value="IMAGE">
+                        Image
+                    </label>
+                </div>
+            </div>
+        <label for="link">Link:</label>
+        <input type="url" name="link" class="input-bar" required value="www.google.com">
+        <label for="desc">Description:</label>
+        <textarea type="text" name="desc" id="textarea-desc" class="textarea-desc" required>Description of www.google.com</textarea>
+        <label for="tags">Tags:</label>
+        <textarea type="text" name="tags" id="textarea-tags-add" class="textarea-tags" required placeholder="Enter max 5 tags use `,` to seperate each tag" >Documents, Websites
+        </textarea>
+        <input type="text" name="signAddress" id="addpost-address" class="disable-input-class">
+        <script>
+            ADDPOST_VALUE=document.getElementById("addpost-address")
+            ADDPOST_VALUE.value=window.location.pathname
+        </script>
+        <div class="form-class-buttons">
+            <button type="submit" class="addpost">Post</button>
+            <button type="button" class="cancel" onclick="CloseLightBox()">Close</button>
+        </div>
+    </form>
+</div>
