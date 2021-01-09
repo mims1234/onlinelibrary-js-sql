@@ -1,11 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
-const path = require("path");
-const moment = require("moment");
 
 const session = require("express-session");
-const bcrpy = require("bcrypt-nodejs");
 require('dotenv').config();
 
 // Routes
@@ -47,13 +44,6 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(express.static(__dirname+'/public'))
-
-// app.get("/" , async(req,res) => {
-//     Query = 'SELECT * FROM user_profile'
-//     db.query(Query,(err,OUTPUT) => { if(err) {console.log(err) } 
-//         res.send(JSON.stringify(OUTPUT));
-//     });
-// })
 
 // PAGES
 app.get("/",getHomePage )
